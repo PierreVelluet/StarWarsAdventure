@@ -1,0 +1,16 @@
+<mat-toolbar>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>A star wars adventure</span>
+  <span class="example-spacer"></span>
+  <div class="profilBox">
+    <p class="loginAndOutText" *ngIf="!loggedIn">Log in</p>
+    <p class="loginAndOutText" *ngIf="loggedIn">Log out</p>
+    <img src="/mwe.jpeg" alt="Profil image" class="profileImage" />
+  </div>
+</mat-toolbar>

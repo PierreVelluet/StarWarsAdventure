@@ -4,21 +4,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { CharacterCardComponent } from './character-card/character-card.component';
-import { CharacterChoosingPanelComponent } from './character-choosing-panel/character-choosing-panel.component';
+import { ChoosingCardComponent } from './choosing-card/choosing-card.component';
+import { ChoosingPanelComponent } from './choosing-panel/choosing-panel.component';
+import { NavbarComponent } from './menus/navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CharacterChoosingPanelComponent,
-  ],
+  declarations: [AppComponent, ChoosingPanelComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    CharacterCardComponent
+    ChoosingCardComponent,
+    NavbarComponent,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

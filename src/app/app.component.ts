@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CharacterCardComponent } from './character-card/character-card.component';
+import { ChoosingCardComponent } from './choosing-card/choosing-card.component';
 
 
 @Component({

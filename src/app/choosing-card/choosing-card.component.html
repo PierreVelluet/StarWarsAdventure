@@ -1,10 +1,11 @@
 <div class="card">
   <img
     class="portrait"
-    src="{{ hero.portrait }}"
+    src="{{ obj.image }}"
     alt="Drawing of a star wars hero"
-    (mouseover)="handleHover()"
-    (mouseleave)="handleHover()"
+    (mouseover)="hoverHandler()"
+    (mouseleave)="hoverHandler()"
+    onclick="() => chooseHandler()"
   />
   <mat-card-content class="cardBody">
     <div
@@ -17,11 +18,8 @@
         'animate__delay-1s'
       ]"
     >
-      <p [ngClass]="['heroName']">{{ hero.name }}</p>
-      <p>{{ trimString(hero.description, 150) }}</p>
+      <p [ngClass]="['heroName']">{{ obj.name }}</p>
+      <p>{{ trimedDescription }}</p>
     </div>
   </mat-card-content>
-  <!-- <mat-card-actions>
-    <button mat-button>Select</button>
-  </mat-card-actions> -->
 </div>
