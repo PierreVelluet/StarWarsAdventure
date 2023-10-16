@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Character } from 'src/typescript/classes/starwars-interfaces';
-import { CharactersDataService } from '../service/data/characters-data.service';
-import { UtilsService } from '../service/utils.service';
+import { CharactersDataService } from '../services/data/characters-data.service';
+import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-choosing-panel',
@@ -24,7 +24,6 @@ export class ChoosingPanelComponent {
         this.characters = this.utilsService.keepRandomObjects(3, data);
         return this.characters;
       },
-      error: (e) => console.error('Error while retrieving characters', e),
     });
   }
 }

@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { ChoosingCardComponent } from './choosing-card/choosing-card.component';
-
 
 @Component({
   selector: 'app-root',

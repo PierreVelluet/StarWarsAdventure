@@ -6,7 +6,7 @@ import {
   Starship,
 } from 'src/typescript/classes/starwars-interfaces';
 import { CommonModule } from '@angular/common';
-import { UtilsService } from '../service/utils.service';
+import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-choosing-card',
