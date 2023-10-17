@@ -1,6 +1,13 @@
-.panelContainer {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: center;
+.panelContainer,
+.choosingPanelTitle {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.choosingPanelTitle {
+    margin: 15px 15px;
+    font-weight: 700;
+    font-size: 25px;
 }

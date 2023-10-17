@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Character } from 'src/typescript/classes/starwars-interfaces';
+import { Character } from 'src/typescript/interfaces/starwars-interfaces';
 
 @Injectable({
   providedIn: 'root',

@@ -1,6 +1,9 @@
-<!-- <h2>Choose your hero</h2> -->
+<h2 class="choosingPanelTitle">{{this.state.gameStep.choosingPanelTitle}}</h2>
 <div class="panelContainer">
-  <div *ngFor="let character of characters">
-    <app-choosing-card [obj]="character"></app-choosing-card>
+  <div *ngFor="let obj of objs">
+    <app-choosing-card
+      (chosenObject)="chosenObjectHandler($event)"
+      [obj]="obj"
+    ></app-choosing-card>
   </div>
 </div>

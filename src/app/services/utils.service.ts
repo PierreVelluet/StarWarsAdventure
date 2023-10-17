@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   Character,
   Starship,
-} from 'src/typescript/classes/starwars-interfaces';
+} from 'src/typescript/interfaces/starwars-interfaces';
 
 @Injectable({
   providedIn: 'root',

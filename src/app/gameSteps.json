@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "name": "Character choosing",
+    "associatedStarwarsEntity": "Character",
+    "choosingPanelTitle": "Choose a character for your adventure."
+  },
+  {
+    "id": 1,
+    "name": "Vehicle choosing",
+    "associatedStarwarsEntity": "Vehicle",
+    "choosingPanelTitle": "Which vehicle would you like to start with ?"
+  },
+  {
+    "id": 2,
+    "name": "Droid choosing",
+    "associatedStarwarsEntity": "Droid",
+    "choosingPanelTitle": "You are fortunate, a droid has been forgotten by the last owner. Which is ... ?"
+  },
+  {
+    "id": 3,
+    "name": "Location choosing",
+    "associatedStarwarsEntity": "Location",
+    "choosingPanelTitle": "Where would you want to go for your first step into this world ?"
+  }
+]

@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import {
   Character,
   Starship,
-} from 'src/typescript/classes/starwars-interfaces';
+} from 'src/typescript/interfaces/starwars-interfaces';
 import { CommonModule } from '@angular/common';
 import { UtilsService } from '../services/utils.service';
 
@@ -28,6 +28,9 @@ export class ChoosingCardComponent {
 
   @Input() public obj!: Character | Starship;
 
+  @Output() chosenObject: EventEmitter<Character | Starship> =
+    new EventEmitter();
+
   public ngOnInit(): void {
     // Ensure the input bindings are actually provided at run-time
     this.assertInputsProvided();
@@ -40,7 +43,7 @@ export class ChoosingCardComponent {
 
   private assertInputsProvided(): void {
     if (!this.obj) {
-      throw new Error('The required obj [userId] was not provided');
+      throw new Error(`The required obj was not provided`);
     }
   }
 
@@ -57,10 +60,13 @@ export class ChoosingCardComponent {
   }
 
   public chooseHandler(): void {
-    if (!prompt(`Are you sure you want to select this hero${this?.obj?.name}`))
+    if (
+      !confirm(
+        `Are you sure you want to select ${this?.obj?.name} as your hero?`
+      )
+    )
       return;
 
-    // Must store the result in the global state.
-    // Must toggle UI logic to highlight this card, and underlight the others.
+    this.chosenObject.emit(this.obj);
   }
 }
