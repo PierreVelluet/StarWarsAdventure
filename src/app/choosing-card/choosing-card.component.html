@@ -2,23 +2,23 @@
   <img
     class="portrait"
     src="{{ obj.image }}"
-    alt="Drawing of a star wars hero"
+    alt="Drawing of a star wars entity"
     (mouseover)="hoverHandler()"
     (mouseleave)="hoverHandler()"
-    (click)="chooseHandler()"
+    (click)="openDialog()"
   />
   <mat-card-content class="cardBody">
     <div
       *ngIf="hovered"
       [class.animate__fadeOut]="startHide"
       [ngClass]="[
-        'heroDetailContainer',
+        'entityDetailContainer',
         'animate__animated',
         'animate__fadeIn',
         'animate__delay-1s'
       ]"
     >
-      <p [ngClass]="['heroName']">{{ obj.name }}</p>
+      <p [ngClass]="['entityName']">{{ obj.name }}</p>
       <p>{{ trimedDescription }}</p>
     </div>
   </mat-card-content>

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './menus/navbar/navbar.component';
@@ -11,7 +12,7 @@ import { ChoosingCardComponent } from './choosing-card/choosing-card.component';
 import { ChoosingPanelComponent } from './choosing-panel/choosing-panel.component';
 import { GlobalErrorHandler } from './global-error-handler';
 import { ServerErrorInterceptor } from './server-error.interceptor';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ChoosingModalComponent } from './choosing-modal/choosing-modal.component';
 
 @NgModule({
   declarations: [AppComponent, ChoosingPanelComponent],
@@ -23,6 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NavbarComponent,
     HttpClientModule,
     MatSnackBarModule,
+    ChoosingModalComponent,
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },

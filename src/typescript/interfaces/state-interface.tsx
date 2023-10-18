@@ -1,14 +1,14 @@
-import { Character } from "./starwars-interfaces";
+import { ICharacter } from "./starwars-interfaces";
 
-export interface GameStep {
+export interface IGameStep {
   id: number;
   name: string;
   associatedStarwarsEntity: string;
   choosingPanelTitle: string;
 }
 
-export interface State {
+export interface IState {
   loading: boolean;
-  character: Character | null;
-  gameStep: GameStep | null;
+  character: ICharacter | null;
+  gameStep: IGameStep ;
 }

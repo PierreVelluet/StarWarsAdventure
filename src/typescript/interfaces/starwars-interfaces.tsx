@@ -1,12 +1,12 @@
-export interface StarwarsEntity {
+export interface IStarwarsEntity {
   _id: string;
   name: string;
   description: string;
   image: string;
 }
 
-export interface Character extends StarwarsEntity {}
+export interface ICharacter extends IStarwarsEntity {}
 
-export interface Starship extends StarwarsEntity {}
+export interface IStarship extends IStarwarsEntity {}
 
-export interface Droid extends StarwarsEntity {}
+export interface IDroid extends IStarwarsEntity {}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
-  Character,
-  Starship,
+  ICharacter,
+  IStarship,
 } from 'src/typescript/interfaces/starwars-interfaces';
 
 @Injectable({
@@ -15,8 +15,8 @@ export class UtilsService {
     else return text;
   }
 
-  public keepRandomObjects(count: number, arr: Character[] | Starship[]) {
-    let answer: Character[] = [],
+  public keepRandomObjects(count: number, arr: ICharacter[] | IStarship[]) {
+    let answer: ICharacter[] = [],
       counter = 0;
 
     while (counter < count) {

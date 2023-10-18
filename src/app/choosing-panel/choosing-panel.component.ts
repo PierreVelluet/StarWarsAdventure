@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { StarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
+import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
+
 import { CharactersDataService } from '../services/data/characters-data.service';
 import { UtilsService } from '../services/utils.service';
 import { GlobalStateService } from '../services/globalState/global-state.service';
@@ -11,7 +12,7 @@ import { GlobalStateService } from '../services/globalState/global-state.service
 })
 export class ChoosingPanelComponent {
   public state: any;
-  objs: StarwarsEntity[];
+  objs: IStarwarsEntity[];
 
   constructor(
     private globalStateService: GlobalStateService,
@@ -25,18 +26,14 @@ export class ChoosingPanelComponent {
     this.state = this.globalStateService.getState();
 
     this.dataService.getCharacters().subscribe({
-      next: (data: StarwarsEntity[]) => {
+      next: (data: IStarwarsEntity[]) => {
         this.objs = this.utilsService.keepRandomObjects(3, data);
         return this.objs;
       },
     });
   }
 
-  chosenObjectHandler(obj: StarwarsEntity) {
-    const newState = {
-      ...this.state,
-      [this.state.gameStep.associatedStarwarsEntity]: obj,
-    };
-    this.globalStateService.setState(newState);
+  chosenObjectHandler(obj: IStarwarsEntity) {
+    this.globalStateService.setStateWithStarwasEntity(obj);
   }
 }

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { State } from 'src/typescript/interfaces/state-interface';
+import { IState } from 'src/typescript/interfaces/state-interface';
 import gameSteps from '../../gameSteps.json';
+import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GlobalStateService {
-  private state: State;
+  private state: IState;
   constructor() {
     this.state = {
       loading: false,
@@ -14,12 +15,20 @@ export class GlobalStateService {
       gameStep: gameSteps[0],
     };
   }
-  public getState(): any {
+  public getState(): IState {
     return this.state;
   }
 
   public setState(newState: any): void {
     this.state = newState;
     console.log('New state is now: ', newState);
+  }
+
+  public setStateWithStarwasEntity(obj: IStarwarsEntity): void {
+    const newState = {
+      ...this.state,
+      [this.state.gameStep?.associatedStarwarsEntity]: obj,
+    };
+    this.setState(newState);
   }
 }

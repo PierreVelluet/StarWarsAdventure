@@ -1,0 +1,12 @@
+<div class="dialog">
+  <img class="portrait" src="{{ data.image }}" />
+  <div mat-dialog-content>
+    Are you sure you want to select <strong>{{ data.name }}</strong> ?
+  </div>
+  <div mat-dialog-actions class="buttonsContainer">
+    <button (click)="save(false)" mat-button mat-dialog-close>Nop</button>
+    <button (click)="save(true)" mat-button mat-dialog-close cdkFocusInitial>
+      Okey
+    </button>
+  </div>
+</div>

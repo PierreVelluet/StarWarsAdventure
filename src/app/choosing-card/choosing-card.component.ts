@@ -1,12 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialog } from '@angular/material/dialog';
 import {
-  Character,
-  Starship,
+  ICharacter,
+  IStarship,
 } from 'src/typescript/interfaces/starwars-interfaces';
 import { CommonModule } from '@angular/common';
+
 import { UtilsService } from '../services/utils.service';
+import { ChoosingModalComponent } from '../choosing-modal/choosing-modal.component';
 
 @Component({
   selector: 'app-choosing-card',
@@ -19,16 +22,15 @@ export class ChoosingCardComponent {
   hovered: boolean;
   startHide: boolean;
   trimedDescription: string;
-
-  constructor(private utilsService: UtilsService) {
+  constructor(private utilsService: UtilsService, public dialog: MatDialog) {
     this.hovered = false;
     this.startHide = false;
     this.trimedDescription = '';
   }
 
-  @Input() public obj!: Character | Starship;
+  @Input() public obj!: ICharacter | IStarship;
 
-  @Output() chosenObject: EventEmitter<Character | Starship> =
+  @Output() chosenObject: EventEmitter<ICharacter | IStarship> =
     new EventEmitter();
 
   public ngOnInit(): void {
@@ -59,14 +61,18 @@ export class ChoosingCardComponent {
     this.hovered = !this.hovered;
   }
 
-  public chooseHandler(): void {
-    if (
-      !confirm(
-        `Are you sure you want to select ${this?.obj?.name} as your hero?`
-      )
-    )
-      return;
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ChoosingModalComponent, {
+      disableClose: true,
+      autoFocus: true,
+      data: this.obj,
+      panelClass: ['animate__animated', 'animate__pulse'],
+    });
 
-    this.chosenObject.emit(this.obj);
+    dialogRef.afterClosed().subscribe((data) => {
+      if (!data) return;
+
+      this.chosenObject.emit(this.obj);
+    });
   }
 }
