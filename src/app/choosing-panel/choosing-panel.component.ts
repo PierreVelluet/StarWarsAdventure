@@ -22,18 +22,25 @@ export class ChoosingPanelComponent {
     this.objs = [];
   }
 
-  ngOnInit() {
+  getStarwarsEntitesByStep(): void {
     this.state = this.globalStateService.getState();
 
-    this.dataService.getCharacters().subscribe({
-      next: (data: IStarwarsEntity[]) => {
-        this.objs = this.utilsService.keepRandomObjects(3, data);
-        return this.objs;
-      },
-    });
+    this.dataService
+      .getStarwarsEntites(this.state.gameStep.associatedStarwarsEntity + 's')
+      .subscribe({
+        next: (data: IStarwarsEntity[]) => {
+          this.objs = this.utilsService.keepRandomObjects(3, data);
+          return this.objs;
+        },
+      });
+  }
+
+  ngOnInit() {
+    this.getStarwarsEntitesByStep();
   }
 
   chosenObjectHandler(obj: IStarwarsEntity) {
-    this.globalStateService.setStateWithStarwasEntity(obj);
+    this.globalStateService.setStateWithStarwasEntity(obj, true);
+    this.getStarwarsEntitesByStep();
   }
 }

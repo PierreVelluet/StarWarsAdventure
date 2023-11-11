@@ -10,5 +10,5 @@ export interface IGameStep {
 export interface IState {
   loading: boolean;
   character: ICharacter | null;
-  gameStep: IGameStep ;
+  gameStep: IGameStep;
 }

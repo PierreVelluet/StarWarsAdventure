@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ICharacter,
-  IStarship,
-} from 'src/typescript/interfaces/starwars-interfaces';
+import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -15,18 +12,20 @@ export class UtilsService {
     else return text;
   }
 
-  public keepRandomObjects(count: number, arr: ICharacter[] | IStarship[]) {
-    let answer: ICharacter[] = [],
+  public keepRandomObjects(
+    count: number,
+    arr: IStarwarsEntity[]
+  ): IStarwarsEntity[] {
+    let answer: IStarwarsEntity[] = [],
       counter = 0;
 
     while (counter < count) {
-      let rand = arr[Math.floor(Math.random() * arr.length)];
+      let rand: IStarwarsEntity = arr[Math.floor(Math.random() * arr.length)];
       if (!answer.some((an) => an === rand)) {
         answer.push(rand);
         counter++;
       }
     }
-
     return answer;
   }
 }

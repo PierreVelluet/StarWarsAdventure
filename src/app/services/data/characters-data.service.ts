@@ -11,7 +11,9 @@ export class CharactersDataService {
     this.characters = [];
   }
 
-  getCharacters() {
-    return this.http.get<ICharacter[]>('http://localhost:8080/characters');
+  getStarwarsEntites(entityType: string) {
+    return this.http.get<ICharacter[]>(
+      `http://localhost:8080/api/entity/${entityType}`
+    );
   }
 }
