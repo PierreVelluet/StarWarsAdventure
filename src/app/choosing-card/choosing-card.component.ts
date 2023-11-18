@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import {
   ICharacter,
   IStarship,
+  IStarwarsEntity,
 } from 'src/typescript/interfaces/starwars-interfaces';
 import { CommonModule } from '@angular/common';
 
@@ -28,7 +29,7 @@ export class ChoosingCardComponent {
     this.trimedDescription = '';
   }
 
-  @Input() public obj!: ICharacter | IStarship;
+  @Input() public obj!: IStarwarsEntity;
 
   @Output() chosenObject: EventEmitter<ICharacter | IStarship> =
     new EventEmitter();

@@ -1,0 +1,10 @@
+<mat-stepper class="stepper" linear="" #stepper>
+  <div *ngFor="let step of gameSteps">
+    <mat-step
+      [completed]="step.id < currentGameStep.id"
+      label="{{ step.associatedStarwarsEntity }}"
+      [editable]="false"
+    >
+    </mat-step>
+  </div>
+</mat-stepper>

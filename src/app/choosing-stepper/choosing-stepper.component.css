@@ -1,0 +1,11 @@
+.mat-stepper-horizontal {
+ 
+}
+
+.stepper {
+    background-color: lightgray;
+}
+
+::ng-deep .mat-horizontal-stepper-header {
+    pointer-events: none !important;
+}

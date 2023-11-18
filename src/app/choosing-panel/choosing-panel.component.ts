@@ -4,6 +4,7 @@ import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
 import { CharactersDataService } from '../services/data/characters-data.service';
 import { UtilsService } from '../services/utils.service';
 import { GlobalStateService } from '../services/globalState/global-state.service';
+import { IGameStep } from 'src/typescript/interfaces/state-interface';
 
 @Component({
   selector: 'app-choosing-panel',
@@ -13,6 +14,7 @@ import { GlobalStateService } from '../services/globalState/global-state.service
 export class ChoosingPanelComponent {
   public state: any;
   objs: IStarwarsEntity[];
+  public currentStep!: IGameStep;
 
   constructor(
     private globalStateService: GlobalStateService,
@@ -20,6 +22,7 @@ export class ChoosingPanelComponent {
     private utilsService: UtilsService
   ) {
     this.objs = [];
+    this.currentStep = this.globalStateService.getState().gameStep;
   }
 
   getStarwarsEntitesByStep(): void {

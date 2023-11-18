@@ -13,6 +13,7 @@ import { ChoosingPanelComponent } from './choosing-panel/choosing-panel.componen
 import { GlobalErrorHandler } from './global-error-handler';
 import { ServerErrorInterceptor } from './server-error.interceptor';
 import { ChoosingModalComponent } from './choosing-modal/choosing-modal.component';
+import { ChoosingStepper } from './choosing-stepper/choosing-stepper.component';
 
 @NgModule({
   declarations: [AppComponent, ChoosingPanelComponent],
@@ -25,6 +26,7 @@ import { ChoosingModalComponent } from './choosing-modal/choosing-modal.componen
     HttpClientModule,
     MatSnackBarModule,
     ChoosingModalComponent,
+    ChoosingStepper
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },

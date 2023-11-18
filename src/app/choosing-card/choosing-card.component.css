@@ -9,18 +9,19 @@
 .cardBody {
   display: flex;
   flex-direction: column;
+  max-height: 300px;
 }
 
 .portrait {
   border-radius: 50%;
-  height: 200px;
-  width: 200px;
+  height: 250px;
+  width: 250px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 15px;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: auto;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 10px;
   /* slice effect start */
   --m: radial-gradient(circle farthest-side at right, #000 99%, #0000) 0 100%/46%
