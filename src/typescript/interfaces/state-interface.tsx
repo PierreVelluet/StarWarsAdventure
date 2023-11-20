@@ -5,6 +5,7 @@ export interface IGameStep {
   name: string;
   associatedStarwarsEntity: string;
   choosingPanelTitle: string;
+  completed: boolean;
 }
 
 export interface IState {
