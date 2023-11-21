@@ -3,35 +3,30 @@
     "id": 0,
     "name": "Character choosing",
     "associatedStarwarsEntity": "character",
-    "choosingPanelTitle": "Choose a character for your adventure.",
     "completed": false
   },
   {
     "id": 1,
     "name": "Vehicle choosing",
     "associatedStarwarsEntity": "vehicle",
-    "choosingPanelTitle": "Which vehicle would you like to start with ?",
     "completed": false
   },
   {
     "id": 2,
     "name": "Droid choosing",
     "associatedStarwarsEntity": "droid",
-    "choosingPanelTitle": "You are fortunate, a droid has been forgotten by the last owner. Which is ... ?",
     "completed": false
   },
   {
     "id": 3,
     "name": "Location choosing",
     "associatedStarwarsEntity": "location",
-    "choosingPanelTitle": "Where would you want to go for your first step into this world ?",
     "completed": false
   },
   {
     "id": 4,
     "name": "Game in progress",
     "associatedStarwarsEntity": "",
-    "choosingPanelTitle": "",
     "completed": false
   }
 ]

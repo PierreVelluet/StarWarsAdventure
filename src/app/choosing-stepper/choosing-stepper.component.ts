@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatStepperModule } from '@angular/material/stepper';
+import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
-import { IGameStep, IState } from 'src/typescript/interfaces/state-interface';
+import { IGameStep } from 'src/typescript/interfaces/state-interface';
 
 import { UtilsService } from '../services/utils.service';
 import { GlobalStateService } from '../services/globalState/global-state.service';
@@ -25,36 +26,50 @@ import steps from '../gameSteps.json';
     MatFormFieldModule,
     MatInputModule,
     CommonModule,
+    MatIconModule,
   ],
 })
 export class ChoosingStepper {
   public gameSteps: IGameStep[];
-  public currentStep: IGameStep;
+  public currentStep!: IGameStep;
+
+  @ViewChild('stepper') stepper!: MatStepper;
 
   constructor(
     private utilsService: UtilsService,
     private globalStateService: GlobalStateService
   ) {
-    this.currentStep = this.globalStateService.getGeneralState().gameStep;
-    this.gameSteps = this.formateStepsForStepper();
+    this.gameSteps = this.formatStepsForStepper();
   }
 
-  ngOnInit() {
-    this.globalStateService.globalSharedState$.subscribe((res: IState) => {
-      this.gameSteps = this.formateStepsForStepper();
+  ngAfterViewInit() {
+    this.globalStateService.globalSharedState$.subscribe((value) => {
+      if (value.gameStep.associatedStarwarsEntity){
+        (this.stepper.selectedIndex = value.gameStep.id),
+        this.gameSteps.forEach(
+          (el: IGameStep) => (el.completed = el.id < this.stepper.selectedIndex)
+        );
+      }
+      else
+      {
+        this.gameSteps.forEach(
+          (el: IGameStep) => (el.completed = true)
+        );
+      }
+     
     });
   }
 
-  private formateStepsForStepper(): IGameStep[] {
-    return steps?.map((el: IGameStep) => {
-      return {
-        ...el,
-        associatedStarwarsEntity: this.utilsService?.capitalize(
-          el?.associatedStarwarsEntity
-        ),
-        completed:
-          el.id < this.globalStateService.getGeneralState().gameStep.id,
-      };
-    });
+  private formatStepsForStepper(): IGameStep[] {
+    return steps
+      ?.filter((el: IGameStep) => el?.associatedStarwarsEntity)
+      .map((el: IGameStep) => {
+        return {
+          ...el,
+          associatedStarwarsEntity: this.utilsService?.capitalize(
+            el?.associatedStarwarsEntity
+          ),
+        };
+      });
   }
 }

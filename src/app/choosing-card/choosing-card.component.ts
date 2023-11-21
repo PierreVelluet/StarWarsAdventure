@@ -4,7 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 import {
   ICharacter,
-  IStarship,
+  IVehicle,
   IStarwarsEntity,
 } from 'src/typescript/interfaces/starwars-interfaces';
 import { CommonModule } from '@angular/common';
@@ -31,7 +31,7 @@ export class ChoosingCardComponent {
 
   @Input() public obj!: IStarwarsEntity;
 
-  @Output() chosenObject: EventEmitter<ICharacter | IStarship> =
+  @Output() chosenObject: EventEmitter<ICharacter | IVehicle> =
     new EventEmitter();
 
   public ngOnInit(): void {

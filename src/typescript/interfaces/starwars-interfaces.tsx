@@ -8,6 +8,8 @@ export interface IStarwarsEntity {
 
 export interface ICharacter extends IStarwarsEntity {}
 
-export interface IStarship extends IStarwarsEntity {}
-
 export interface IDroid extends IStarwarsEntity {}
+
+export interface IVehicle extends IStarwarsEntity {}
+
+export interface ILocation extends IStarwarsEntity {}
