@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
 
-import { CharactersDataService } from '../services/data/characters-data.service';
-import { UtilsService } from '../services/utils.service';
-import { GlobalStateService } from '../services/globalState/global-state.service';
+import { CharactersDataService } from '../../services/data/characters-data.service';
+import { UtilsService } from '../../services/utils.service';
+import { GlobalStateService } from '../../services/globalState/global-state.service';
 import { IGameStep } from 'src/typescript/interfaces/state-interface';
 import { Subscription } from 'rxjs';
 

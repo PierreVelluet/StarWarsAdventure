@@ -1,10 +1,12 @@
 <div class="card">
   <img
     class="portrait"
-    src="{{ obj.image }}"
     alt="Drawing of a star wars entity"
     (mouseover)="hoverHandler()"
     (mouseleave)="hoverHandler()"
+    [src]="defaultImage"
+    [lazyLoad]="lazyLoadImage"
+    [errorImage]="imageToShowOnError"
     (click)="openDialog()"
   />
   <mat-card-content class="cardBody">
@@ -23,3 +25,5 @@
     </div>
   </mat-card-content>
 </div>
+
+<!-- src="{{ obj.image }}" -->

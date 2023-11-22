@@ -9,24 +9,32 @@ import {
 } from 'src/typescript/interfaces/starwars-interfaces';
 import { CommonModule } from '@angular/common';
 
-import { UtilsService } from '../services/utils.service';
+import { UtilsService } from '../../services/utils.service';
 import { ChoosingModalComponent } from '../choosing-modal/choosing-modal.component';
+
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @Component({
   selector: 'app-choosing-card',
   templateUrl: './choosing-card.component.html',
   styleUrls: ['./choosing-card.component.css'],
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, CommonModule],
+  imports: [MatCardModule, MatButtonModule, CommonModule, LazyLoadImageModule],
 })
 export class ChoosingCardComponent {
   hovered: boolean;
   startHide: boolean;
   trimedDescription: string;
+  lazyLoadImage: string;
+  defaultImage: string;
+  imageToShowOnError: string;
   constructor(private utilsService: UtilsService, public dialog: MatDialog) {
     this.hovered = false;
     this.startHide = false;
     this.trimedDescription = '';
+    this.lazyLoadImage = '';
+    this.defaultImage = '/assets/images/placeHolder.png';
+    this.imageToShowOnError = '/assets/images/error.png';
   }
 
   @Input() public obj!: IStarwarsEntity;
@@ -37,10 +45,11 @@ export class ChoosingCardComponent {
   public ngOnInit(): void {
     // Ensure the input bindings are actually provided at run-time
     this.assertInputsProvided();
+    this.lazyLoadImage = this.obj.image;
 
     this.trimedDescription = this.utilsService.trimString(
       this.obj.description,
-      150
+      250
     );
   }
 

@@ -1,4 +1,4 @@
-@import "~animate.css/animate.min";
+@use "~animate.css/animate.min";
 
 /* All delay classes will take half the time to start */
 :root {

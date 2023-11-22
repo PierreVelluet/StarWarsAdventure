@@ -9,9 +9,9 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { IGameStep } from 'src/typescript/interfaces/state-interface';
 
-import { UtilsService } from '../services/utils.service';
-import { GlobalStateService } from '../services/globalState/global-state.service';
-import steps from '../gameSteps.json';
+import { UtilsService } from '../../services/utils.service';
+import { GlobalStateService } from '../../services/globalState/global-state.service';
+import steps from '../../gameSteps.json';
 
 @Component({
   selector: 'app-choosing-stepper',
@@ -44,19 +44,15 @@ export class ChoosingStepper {
 
   ngAfterViewInit() {
     this.globalStateService.globalSharedState$.subscribe((value) => {
-      if (value.gameStep.associatedStarwarsEntity){
+      if (value.gameStep.associatedStarwarsEntity) {
         (this.stepper.selectedIndex = value.gameStep.id),
-        this.gameSteps.forEach(
-          (el: IGameStep) => (el.completed = el.id < this.stepper.selectedIndex)
-        );
+          this.gameSteps.forEach(
+            (el: IGameStep) =>
+              (el.completed = el.id < this.stepper.selectedIndex)
+          );
+      } else {
+        this.gameSteps.forEach((el: IGameStep) => (el.completed = true));
       }
-      else
-      {
-        this.gameSteps.forEach(
-          (el: IGameStep) => (el.completed = true)
-        );
-      }
-     
     });
   }
 

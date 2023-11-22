@@ -8,12 +8,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './menus/navbar/navbar.component';
 import { AppComponent } from './app.component';
-import { ChoosingCardComponent } from './choosing-card/choosing-card.component';
-import { ChoosingPanelComponent } from './choosing-panel/choosing-panel.component';
+import { ChoosingCardComponent } from './component/choosing-card/choosing-card.component';
+import { ChoosingPanelComponent } from './component/choosing-panel/choosing-panel.component';
 import { GlobalErrorHandler } from './global-error-handler';
 import { ServerErrorInterceptor } from './server-error.interceptor';
-import { ChoosingModalComponent } from './choosing-modal/choosing-modal.component';
-import { ChoosingStepper } from './choosing-stepper/choosing-stepper.component';
+import { ChoosingModalComponent } from './component/choosing-modal/choosing-modal.component';
+import { ChoosingStepper } from './component/choosing-stepper/choosing-stepper.component';
+
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [AppComponent, ChoosingPanelComponent],
@@ -26,7 +28,8 @@ import { ChoosingStepper } from './choosing-stepper/choosing-stepper.component';
     HttpClientModule,
     MatSnackBarModule,
     ChoosingModalComponent,
-    ChoosingStepper
+    ChoosingStepper,
+    LazyLoadImageModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },

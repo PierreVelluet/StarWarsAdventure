@@ -1,7 +1,10 @@
 <div class="dialog">
   <img class="portrait" src="{{ data.image }}" />
   <div mat-dialog-content>
-    Are you sure you want to select <strong>{{ data.name }}</strong> ?
+    Are you sure you want to select <br />
+    <p class="entityName">{{ data.name }} </p>
+    <p class="entityType">as your {{data.type}} ?</p>
+    
   </div>
   <div mat-dialog-actions class="buttonsContainer">
     <button (click)="save(false)" mat-button mat-dialog-close>Nop</button>
