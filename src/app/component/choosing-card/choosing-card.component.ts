@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
 import { UtilsService } from '../../services/utils.service';
 import { ChoosingModalComponent } from '../choosing-modal/choosing-modal.component';
 
+import { LoadingStateService } from 'src/app/services/globalState/loading-state.service';
+
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @Component({
@@ -28,13 +30,21 @@ export class ChoosingCardComponent {
   lazyLoadImage: string;
   defaultImage: string;
   imageToShowOnError: string;
-  constructor(private utilsService: UtilsService, public dialog: MatDialog) {
+  public isLoading: boolean = false;
+  constructor(
+    private utilsService: UtilsService,
+    public dialog: MatDialog,
+    private loadingStateService: LoadingStateService
+  ) {
     this.hovered = false;
     this.startHide = false;
     this.trimedDescription = '';
     this.lazyLoadImage = '';
     this.defaultImage = '/assets/images/placeHolder.png';
     this.imageToShowOnError = '/assets/images/error.png';
+    loadingStateService.loadingObs$.subscribe(
+      (value) => (this.isLoading = value)
+    );
   }
 
   @Input() public obj!: IStarwarsEntity;

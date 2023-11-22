@@ -7,7 +7,7 @@
     [src]="defaultImage"
     [lazyLoad]="lazyLoadImage"
     [errorImage]="imageToShowOnError"
-    (click)="openDialog()"
+    (click)="!isLoading ? openDialog() : null"
   />
   <mat-card-content class="cardBody">
     <div
