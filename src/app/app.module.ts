@@ -10,10 +10,12 @@ import { NavbarComponent } from './menus/navbar/navbar.component';
 import { AppComponent } from './app.component';
 import { ChoosingCardComponent } from './component/choosing-card/choosing-card.component';
 import { ChoosingPanelComponent } from './component/choosing-panel/choosing-panel.component';
-import { GlobalErrorHandler } from './global-error-handler';
-import { ServerErrorInterceptor } from './server-error.interceptor';
 import { ChoosingModalComponent } from './component/choosing-modal/choosing-modal.component';
 import { ChoosingStepper } from './component/choosing-stepper/choosing-stepper.component';
+
+import { GlobalErrorHandler } from './global-error-handler';
+import { ServerErrorInterceptor } from './server-error.interceptor';
+import { HttpRequestInterceptor } from './http-request-interceptor';
 
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 
@@ -29,13 +31,18 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     MatSnackBarModule,
     ChoosingModalComponent,
     ChoosingStepper,
-    LazyLoadImageModule
+    LazyLoadImageModule,
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestInterceptor,
       multi: true,
     },
   ],

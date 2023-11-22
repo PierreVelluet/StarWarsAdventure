@@ -6,6 +6,7 @@ import { UtilsService } from '../../services/utils.service';
 import { GlobalStateService } from '../../services/globalState/global-state.service';
 import { IGameStep } from 'src/typescript/interfaces/state-interface';
 import { Subscription } from 'rxjs';
+import { LoadingStateService } from 'src/app/services/globalState/loading-state.service';
 
 @Component({
   selector: 'app-choosing-panel',
@@ -21,7 +22,8 @@ export class ChoosingPanelComponent {
   constructor(
     private globalStateService: GlobalStateService,
     private dataService: CharactersDataService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private loadingStateService: LoadingStateService
   ) {
     this.objs = [];
     this.generalState = this.globalStateService.getGeneralState();
