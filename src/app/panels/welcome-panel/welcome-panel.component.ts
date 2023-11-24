@@ -29,7 +29,6 @@ export class WelcomePanelComponent {
       this.step2 = true;
     }, 10000);
     setTimeout(() => {
-      console.log('<welcome-panel.component>  this.step3',  this.step3);
       this.step3 = true;
     }, 30000);
   }
