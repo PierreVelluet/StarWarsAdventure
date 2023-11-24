@@ -1,14 +1,24 @@
 <div class="welcome-panel-container">
   <!-- WelcomingStep 0 -->
-  <button
-    *ngIf="currentWelcomingStep === allWelcomingSteps.Step0"
-    (click)="launchButtonHandler()"
-    class="launch-button"
-    mat-raised-button
-    color="accent"
+  <div
+    [ngClass]="[
+      'launch-button',
+      'animate__animated',
+      isbuttonInAnimationNeeded ? 'animate__fadeIn' : '',
+      isAnimated ? 'animate__headShake' : ''
+    ]"
   >
-    Dive into Starwars ?
-  </button>
+    <button
+      *ngIf="currentWelcomingStep === allWelcomingSteps.Step0"
+      (click)="launchButtonHandler()"
+      class="launch-button"
+      mat-raised-button
+      color="accent"
+    >
+      Dive into Starwars ?
+    </button>
+  </div>
+
   <!-- WelcomingStep 1 -->
   <div
     [hidden]="currentWelcomingStep != allWelcomingSteps.Step1"
@@ -20,7 +30,10 @@
   </div>
   <!-- WelcomingStep 2 -->
   <app-scrolling-text
-    *ngIf="currentWelcomingStep === allWelcomingSteps.Step2"
+    *ngIf="
+      currentWelcomingStep === allWelcomingSteps.Step2 ||
+      currentWelcomingStep === allWelcomingSteps.Step3
+    "
   ></app-scrolling-text>
   <!-- WelcomingStep 3 -->
   <div
@@ -28,7 +41,8 @@
     [ngClass]="[
       'start-button-container',
       'animate__animated',
-      'animate__fadeIn'
+      isbuttonInAnimationNeeded ? 'animate__fadeIn' : '',
+      isAnimated ? 'animate__headShake' : ''
     ]"
   >
     <button

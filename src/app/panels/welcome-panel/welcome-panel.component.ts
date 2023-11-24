@@ -17,11 +17,23 @@ import { ChangeStepDirection } from 'src/typescript/enums';
 export class WelcomePanelComponent {
   public allWelcomingSteps = WelcomingSteps;
   public currentWelcomingStep = WelcomingSteps.Step0;
+  public isAnimated: boolean = false;
+  public isbuttonInAnimationNeeded: boolean = true;
 
   constructor(private globalStateService: GlobalStateService) {}
 
   ngOnInit() {
     this.starWarsAnimation();
+
+    // Animate the button each x seconds
+    setInterval(() => {
+      this.isAnimated = !this.isAnimated;
+    }, 2500);
+
+    // Set or unset the in-animation of the button, because of animation conflicts.
+    setTimeout(() => {
+      this.isbuttonInAnimationNeeded = false;
+    }, 1000);
   }
 
   launchButtonHandler(): void {
@@ -31,7 +43,11 @@ export class WelcomePanelComponent {
     }, 10000);
     setTimeout(() => {
       this.currentWelcomingStep = this.allWelcomingSteps.Step3;
+      this.isbuttonInAnimationNeeded = false;
     }, 30000);
+
+    // Reset the animation of the button, for the next one to come in with an animation
+    this.isbuttonInAnimationNeeded = true;
   }
 
   // End the introduction and set-up the game
