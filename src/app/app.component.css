@@ -6,9 +6,11 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 .content {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }

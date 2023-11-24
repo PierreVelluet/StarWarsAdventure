@@ -28,9 +28,9 @@ export class ChoosingPanelComponent {
     this.objs = [];
     this.generalState = this.globalStateService.getGeneralState();
     this._gameStep_subscription =
-      this.globalStateService.globalSharedState$.subscribe(
-        (value) => (this.currentStep = value.gameStep)
-      );
+      this.globalStateService.globalSharedState$.subscribe((value) => {
+        this.currentStep = value.gameStep;
+      });
   }
 
   ngOnInit() {

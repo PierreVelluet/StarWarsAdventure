@@ -1,0 +1,164 @@
+/* Animation properties */
+.welcome-panel-container::ng-deep {
+  background-image: url(https://cssanimation.rocks/demo/starwars/images/bg.jpg) !important;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.start-button,
+.launch-button::ng-deep {
+  height: 75px;
+  width: 200px;
+  align-self: center;
+}
+
+.start-button-container {
+  align-self: flex-end;
+  margin-bottom: 20vh;
+  position: absolute;
+}
+
+.star::ng-deep {
+  animation: star 10s ease-out infinite;
+}
+.wars::ng-deep {
+  animation: wars 10s ease-out infinite;
+}
+.byline::ng-deep span {
+  animation: spin-letters 10s linear infinite;
+}
+.byline::ng-deep {
+  animation: move-byline 10s linear infinite;
+}
+
+/* Keyframes */
+@keyframes star {
+  0% {
+    opacity: 0;
+    transform: scale(1.5) translateY(-0.75em);
+  }
+  20% {
+    opacity: 1;
+  }
+  89% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(-1000em);
+  }
+}
+
+@keyframes wars {
+  0% {
+    opacity: 0;
+    transform: scale(1.5) translateY(0.5em);
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(-1000em);
+  }
+}
+
+@keyframes spin-letters {
+  0%,
+  10% {
+    opacity: 0;
+    transform: rotateY(90deg);
+  }
+  30% {
+    opacity: 1;
+  }
+  70%,
+  86% {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+  95%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes move-byline {
+  0% {
+    transform: translateZ(5em);
+  }
+  100% {
+    transform: translateZ(0);
+  }
+}
+
+/* Make the 3D work on the container */
+.starwars-demo::ng-deep {
+  perspective: 800px;
+  transform-style: preserve3d;
+}
+
+/* General styles and layout */
+.starwars-demo::ng-deep {
+  height: 17em;
+  left: 50%;
+  position: absolute;
+  top: 53%;
+  transform: translate(-50%, -50%);
+  width: 34em;
+}
+
+.byline::ng-deep span {
+  display: inline-block;
+  margin-top: 30px;
+}
+
+img::ng-deep {
+  width: 100%;
+}
+
+.star::ng-deep,
+.wars::ng-deep,
+.byline::ng-deep {
+  position: absolute;
+}
+
+.star::ng-deep {
+  top: -0.75em;
+}
+
+.wars::ng-deep {
+  bottom: -0.5em;
+}
+
+.byline::ng-deep {
+  color: #fff;
+  font-family: "ITC Serif Gothic", Lato;
+  font-size: 2.25em;
+  left: -2em;
+  letter-spacing: 0.4em;
+  right: -2em;
+  text-align: center;
+  text-transform: uppercase;
+  top: 29%;
+}
+
+/*** Media queries for adjusting to different screen sizes ***/
+
+@media only screen and (max-width: 600px) {
+  .starwars-demo::ng-deep {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .starwars-demo::ng-deep {
+    font-size: 7px;
+  }
+}

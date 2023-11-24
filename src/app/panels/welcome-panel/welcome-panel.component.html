@@ -1,0 +1,32 @@
+<div class="welcome-panel-container">
+  <!-- Step 1 -->
+  <button
+    *ngIf="step1"
+    (click)="launchButtonHandler()"
+    class="launch-button"
+    mat-raised-button
+    color="accent"
+  >
+    Launch ...
+  </button>
+  <!-- Step 2 -->
+  <div [hidden]="step1 || step2" class="starwars-demo">
+    <img src="/assets/images/star.svg" alt="Star" class="star" />
+    <img src="assets/images/wars.svg" alt="Wars" class="wars" />
+    <h2 class="byline" id="byline">tribute's adventure</h2>
+  </div>
+  <!-- Step 3 -->
+  <app-scrolling-text *ngIf="step2"></app-scrolling-text>
+  <!-- Step 4 -->
+  <div *ngIf="step3" [ngClass]="['start-button-container','animate__animated', 'animate__fadeIn']">
+    <button
+     
+      (click)="startButtonHandler()"
+      [ngClass]="['start-button']"
+      mat-raised-button
+      color="accent"
+    >
+      Start ...
+    </button>
+  </div>
+</div>
