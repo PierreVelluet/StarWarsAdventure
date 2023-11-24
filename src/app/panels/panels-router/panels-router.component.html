@@ -1,4 +1,8 @@
 <div class="panels-router-container">
-  <app-welcome-panel *ngIf="displayWelcomePanel"></app-welcome-panel>
-  <app-choosing-panel *ngIf="displayChoosingPanel"></app-choosing-panel>
+  <app-welcome-panel
+    *ngIf="currentStepType === allStepTypes.Introduction"
+  ></app-welcome-panel>
+  <app-choosing-panel
+    *ngIf="currentStepType === allStepTypes.Choice"
+  ></app-choosing-panel>
 </div>

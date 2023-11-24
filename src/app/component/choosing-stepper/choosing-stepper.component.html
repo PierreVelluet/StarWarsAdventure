@@ -1,14 +1,16 @@
-<mat-stepper class="stepper" #stepper [linear]="false" selectedIndex="selectedIndex">
-  
+<mat-stepper
+  class="stepper"
+  #stepper
+  [linear]="false"
+  selectedIndex="selectedIndex"
+>
   <div *ngFor="let step of gameSteps">
     <mat-icon *ngIf="step.completed">done</mat-icon>
     <mat-step
       [completed]="step.completed"
-      label="{{ step.associatedStarwarsEntity }}"
+      label="{{ step.stepperLabel }}"
       [editable]="false"
     >
     </mat-step>
   </div>
 </mat-stepper>
-
-<!-- [editable]="false" -->

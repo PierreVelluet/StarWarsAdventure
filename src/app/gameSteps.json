@@ -3,36 +3,50 @@
     "id": 0,
     "name": "Welcoming and rules",
     "associatedStarwarsEntity": "",
-    "completed": false
+    "completed": false,
+    "type": 0
   },
   {
     "id": 1,
     "name": "Character choosing",
     "associatedStarwarsEntity": "character",
-    "completed": false
+    "stepperLabel": "Character",
+    "choiceNumber": 0,
+    "completed": false,
+    "type": 1
   },
   {
     "id": 2,
     "name": "Vehicle choosing",
     "associatedStarwarsEntity": "vehicle",
-    "completed": false
+    "stepperLabel": "Vehicle",
+    "choiceNumber": 1,
+    "completed": false,
+    "type": 1
   },
   {
     "id": 3,
     "name": "Droid choosing",
     "associatedStarwarsEntity": "droid",
-    "completed": false
+    "stepperLabel": "Droid",
+    "choiceNumber": 2,
+    "completed": false,
+    "type": 1
   },
   {
     "id": 4,
     "name": "Location choosing",
     "associatedStarwarsEntity": "location",
-    "completed": false
+    "stepperLabel": "Location",
+    "choiceNumber": 3,
+    "completed": false,
+    "type": 1
   },
   {
     "id": 5,
     "name": "Game in progress",
     "associatedStarwarsEntity": "",
-    "completed": false
+    "completed": false,
+    "type": 2
   }
 ]

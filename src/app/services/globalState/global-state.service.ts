@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { IGameStep, IState } from 'src/typescript/interfaces/state-interface';
 import steps from '../../gameSteps.json';
 import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
+import { ChangeStepDirection } from 'src/typescript/enums';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class GlobalStateService {
     droid: null,
     vehicle: null,
     location: null,
-    gameStep: steps[0],
+    gameStep: steps[1],
   });
   globalSharedState$: Observable<IState> = this.generalState.asObservable();
 
@@ -26,6 +27,15 @@ export class GlobalStateService {
 
   public getGeneralState(): IState {
     return this.generalState.getValue();
+  }
+
+  public changeStep(direction: ChangeStepDirection) {
+    const newState: IState = {
+      ...this.generalState.value,
+      gameStep: this.gameSteps[this.generalState.value.gameStep.id + direction],
+    };
+    this.generalState.next(newState);
+    console.log('newState', newState);
   }
 
   public updateEntityAndMoveNextStep(

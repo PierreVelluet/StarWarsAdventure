@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
 import { ScrollingTextComponent } from 'src/app/component/scrolling-text/scrolling-text.component';
+import { WelcomingSteps } from 'src/typescript/enums';
+import { GlobalStateService } from 'src/app/services/globalState/global-state.service';
+import { ChangeStepDirection } from 'src/typescript/enums';
 
 @Component({
   selector: 'app-welcome-panel',
@@ -12,30 +15,28 @@ import { ScrollingTextComponent } from 'src/app/component/scrolling-text/scrolli
   imports: [CommonModule, MatButtonModule, ScrollingTextComponent],
 })
 export class WelcomePanelComponent {
-  public step1: boolean = true;
-  public step2: boolean = false;
-  public step3: boolean = false;
+  public allWelcomingSteps = WelcomingSteps;
+  public currentWelcomingStep = WelcomingSteps.Step0;
 
-  constructor() {}
+  constructor(private globalStateService: GlobalStateService) {}
 
   ngOnInit() {
     this.starWarsAnimation();
   }
 
-  // Stop step1 and start step2 some seconds after
   launchButtonHandler(): void {
-    this.step1 = false;
+    this.currentWelcomingStep = this.allWelcomingSteps.Step1;
     setTimeout(() => {
-      this.step2 = true;
+      this.currentWelcomingStep = this.allWelcomingSteps.Step2;
     }, 10000);
     setTimeout(() => {
-      this.step3 = true;
+      this.currentWelcomingStep = this.allWelcomingSteps.Step3;
     }, 30000);
   }
 
   // End the introduction and set-up the game
   startButtonHandler() {
-    console.log('launched');
+    this.globalStateService.changeStep(ChangeStepDirection.Forward);
   }
 
   //Animations for the logo and title present in step1
