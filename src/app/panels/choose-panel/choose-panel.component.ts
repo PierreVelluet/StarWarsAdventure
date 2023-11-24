@@ -45,15 +45,19 @@ export class ChoosingPanelComponent {
         next: (data: IStarwarsEntity[]) => {
           this.objs = this.utilsService
             .keepRandomObjects(3, data)
-            // Add dynamicly some delays
             .map((el: IStarwarsEntity, index: number) => {
-              return {
-                ...el,
-                delay: `animate__delay-${index}s`,
-              };
+              return this.addDelayKeyToEntity(el, index);
             });
         },
       });
+  }
+
+  // Add the delay key based on the index, to the entity to display.
+  addDelayKeyToEntity(el: IStarwarsEntity, index: number): IStarwarsEntity {
+    return {
+      ...el,
+      delay: `animate__delay-${index}s`,
+    };
   }
 
   chosenObjectHandler(starwarsEntity: IStarwarsEntity) {

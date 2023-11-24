@@ -1,31 +1,25 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
-import {
-  ICharacter,
-  IVehicle,
-  IStarwarsEntity,
-} from 'src/typescript/interfaces/starwars-interfaces';
 import { CommonModule } from '@angular/common';
+
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+
+import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
+import { LoadingStateService } from 'src/app/services/globalState/loading-state.service';
 
 import { UtilsService } from '../../services/utils.service';
 import { ChoosingModalComponent } from '../choosing-modal/choosing-modal.component';
-
-import { LoadingStateService } from 'src/app/services/globalState/loading-state.service';
-
-import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @Component({
   selector: 'app-choosing-card',
   templateUrl: './choosing-card.component.html',
   styleUrls: ['./choosing-card.component.css'],
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, CommonModule, LazyLoadImageModule],
+  imports: [MatCardModule, CommonModule, LazyLoadImageModule],
 })
 export class ChoosingCardComponent {
   hovered: boolean;
-  startHide: boolean;
   trimedDescription: string;
   lazyLoadImage: string;
   defaultImage: string;
@@ -39,7 +33,6 @@ export class ChoosingCardComponent {
     private loadingStateService: LoadingStateService
   ) {
     this.hovered = false;
-    this.startHide = false;
     this.trimedDescription = '';
     this.lazyLoadImage = '';
     this.defaultImage = '/assets/images/placeHolder.png';
@@ -51,8 +44,7 @@ export class ChoosingCardComponent {
 
   @Input() public obj!: IStarwarsEntity;
 
-  @Output() chosenObject: EventEmitter<ICharacter | IVehicle> =
-    new EventEmitter();
+  @Output() chosenObject: EventEmitter<IStarwarsEntity> = new EventEmitter();
 
   public ngOnInit(): void {
     // Ensure the input bindings are actually provided at run-time
@@ -67,7 +59,7 @@ export class ChoosingCardComponent {
     // Prevent the element to be clicked until the animation end.
     setTimeout(() => {
       this.isClickPrevented = false;
-    }, 1000);
+    }, 1500);
   }
 
   private assertInputsProvided(): void {
@@ -76,15 +68,7 @@ export class ChoosingCardComponent {
     }
   }
 
-  public async hoverHandler(): Promise<void> {
-    if (this.hovered) {
-      this.startHide = true;
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      this.startHide = false;
-    } else {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-    }
-
+  public hoverHandler(): void {
     this.hovered = !this.hovered;
   }
 
