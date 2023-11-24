@@ -1,9 +1,9 @@
 .stepper {
-    background-color: lightgray;
-    margin-top: -15px;
-    margin-bottom: -40px;
+  background-color: transparent;
+  margin-top: -15px;
+  margin-bottom: -40px;
 }
 
 ::ng-deep .mat-horizontal-stepper-header {
-    pointer-events: none !important;
+  pointer-events: none !important;
 }

@@ -1,3 +1,11 @@
+.choose-panel-container {
+  background-image: url("/assets/images/light-background.jpeg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .panelContainer,
 .choosingPanelTitle {
   display: flex;

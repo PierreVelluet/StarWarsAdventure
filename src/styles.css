@@ -2,7 +2,7 @@
 
 /* All delay classes will take half the time to start */
 :root {
-  --animate-delay: 0.1s;
+  --animate-delay: 0.5s;
 }
 
 html,

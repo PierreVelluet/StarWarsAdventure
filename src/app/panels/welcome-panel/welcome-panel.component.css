@@ -1,6 +1,6 @@
 /* Animation properties */
 .welcome-panel-container::ng-deep {
-  background-image: url(https://cssanimation.rocks/demo/starwars/images/bg.jpg) !important;
+  background-image: url("/assets/images/dark-background.jpeg");
   height: 100vh;
   display: flex;
   justify-content: center;

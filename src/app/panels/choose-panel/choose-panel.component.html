@@ -1,0 +1,15 @@
+<div
+  [ngClass]="['choose-panel-container', 'animate__animated', 'animate__fadeIn']"
+>
+  <h2 class="choosingPanelTitle">Choose your loadout for the adventure</h2>
+  <app-choosing-stepper></app-choosing-stepper>
+  <div class="panelContainer">
+    <div class="cards-container" *ngFor="let obj of objs">
+      <app-choosing-card
+        [ngClass]="['animate__animated', 'animate__fadeIn', obj.delay]"
+        (chosenObject)="chosenObjectHandler($event)"
+        [obj]="obj"
+      ></app-choosing-card>
+    </div>
+  </div>
+</div>

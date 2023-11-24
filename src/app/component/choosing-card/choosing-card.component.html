@@ -1,4 +1,4 @@
-<div class="card">
+<div [ngClass]="['card', isClickPrevented ? 'clickPrevented' : '']">
   <img
     class="portrait"
     alt="Drawing of a star wars entity"
@@ -10,20 +10,9 @@
     (click)="!isLoading ? openDialog() : null"
   />
   <mat-card-content class="cardBody">
-    <div
-      *ngIf="hovered"
-      [class.animate__fadeOut]="startHide"
-      [ngClass]="[
-        'entityDetailContainer',
-        'animate__animated',
-        'animate__fadeIn',
-        'animate__delay-1s'
-      ]"
-    >
+    <div *ngIf="hovered" [class.animate__fadeOut]="startHide">
       <p [ngClass]="['entityName']">{{ obj.name }}</p>
       <p>{{ trimedDescription }}</p>
     </div>
   </mat-card-content>
 </div>
-
-<!-- src="{{ obj.image }}" -->

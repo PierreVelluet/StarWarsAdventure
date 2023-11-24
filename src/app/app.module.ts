@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './menus/navbar/navbar.component';
 import { AppComponent } from './app.component';
 import { ChoosingCardComponent } from './component/choosing-card/choosing-card.component';
-import { ChoosingPanelComponent } from './panels/choosing-panel/choosing-panel.component';
+import { ChoosingPanelComponent } from './panels/choose-panel/choose-panel.component';
 import { ChoosingModalComponent } from './component/choosing-modal/choosing-modal.component';
 import { ChoosingStepper } from './component/choosing-stepper/choosing-stepper.component';
 import { WelcomePanelComponent } from './panels/welcome-panel/welcome-panel.component';

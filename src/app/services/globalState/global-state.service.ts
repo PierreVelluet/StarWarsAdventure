@@ -17,7 +17,7 @@ export class GlobalStateService {
     droid: null,
     vehicle: null,
     location: null,
-    gameStep: steps[1],
+    gameStep: steps[0],
   });
   globalSharedState$: Observable<IState> = this.generalState.asObservable();
 

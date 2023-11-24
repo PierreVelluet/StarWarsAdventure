@@ -30,7 +30,9 @@ export class ChoosingCardComponent {
   lazyLoadImage: string;
   defaultImage: string;
   imageToShowOnError: string;
+  public isClickPrevented: boolean = true;
   public isLoading: boolean = false;
+
   constructor(
     private utilsService: UtilsService,
     public dialog: MatDialog,
@@ -61,6 +63,11 @@ export class ChoosingCardComponent {
       this.obj.description,
       250
     );
+
+    // Prevent the element to be clicked until the animation end.
+    setTimeout(() => {
+      this.isClickPrevented = false;
+    }, 1000);
   }
 
   private assertInputsProvided(): void {

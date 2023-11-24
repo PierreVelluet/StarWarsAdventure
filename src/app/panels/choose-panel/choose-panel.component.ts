@@ -9,13 +9,13 @@ import { GlobalStateService } from '../../services/globalState/global-state.serv
 import { StepType } from 'src/typescript/enums';
 
 @Component({
-  selector: 'app-choosing-panel',
-  templateUrl: './choosing-panel.component.html',
-  styleUrls: ['./choosing-panel.component.css'],
+  selector: 'app-choose-panel',
+  templateUrl: './choose-panel.component.html',
+  styleUrls: ['./choose-panel.component.css'],
 })
 export class ChoosingPanelComponent {
   public generalState: any;
-  objs: IStarwarsEntity[];
+  objs: any[];
   public currentStep!: IGameStep;
   private stepIsChoosingType: boolean = false;
 
@@ -43,8 +43,15 @@ export class ChoosingPanelComponent {
       .getStarwarsEntites(this.currentStep.associatedStarwarsEntity + 's')
       .subscribe({
         next: (data: IStarwarsEntity[]) => {
-          this.objs = this.utilsService.keepRandomObjects(3, data);
-          return this.objs;
+          this.objs = this.utilsService
+            .keepRandomObjects(3, data)
+            // Add dynamicly some delays
+            .map((el: IStarwarsEntity, index: number) => {
+              return {
+                ...el,
+                delay: `animate__delay-${index}s`,
+              };
+            });
         },
       });
   }

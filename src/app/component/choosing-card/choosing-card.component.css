@@ -66,3 +66,7 @@
   word-spacing: 1.6px;
   color: #000000;
 }
+
+.clickPrevented {
+  pointer-events: none;
+}

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChoosingPanelComponent } from './choosing-panel.component';
+import { ChoosingPanelComponent } from './choose-panel.component';
 
 describe('ChoosingPanelComponent', () => {
   let component: ChoosingPanelComponent;
