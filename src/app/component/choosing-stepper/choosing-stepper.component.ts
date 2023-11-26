@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
 
-import { IGameStep } from 'src/typescript/interfaces/state-interface';
+import { IGameStep } from 'src/typescript/interfaces/general-interfaces';
 import { StepType } from 'src/typescript/enums';
 
-import { UtilsService } from '../../services/utils.service';
-import { GlobalStateService } from '../../services/globalState/global-state.service';
+import { StoreService } from '../../services/globalState/store.service';
 import steps from '../../gameSteps.json';
 
 @Component({
@@ -22,10 +21,7 @@ export class ChoosingStepper {
 
   @ViewChild('stepper') stepper!: MatStepper;
 
-  constructor(
-    private utilsService: UtilsService,
-    private globalStateService: GlobalStateService
-  ) {
+  constructor(private globalStateService: StoreService) {
     this.gameSteps = steps?.filter(
       (el: IGameStep) => el.type == StepType.Choice
     );
@@ -35,9 +31,9 @@ export class ChoosingStepper {
     // Workaround for next macrotask to be executed.
     // "https://stackoverflow.com/questions/71978152/how-can-i-fix-this-specific-ng0100-expressionchangedafterithasbeencheckederror"
     setTimeout(() => {
-      this.globalStateService.globalSharedState$.subscribe((value) => {
-        if (value.gameStep.type == StepType.Choice) {
-          (this.stepper.selectedIndex = value.gameStep.id - 1),
+      this.globalStateService.sharedState$.subscribe((value) => {
+        if (value.currentGameStep.type == StepType.Choice) {
+          (this.stepper.selectedIndex = value.currentGameStep.id - 1),
             this.gameSteps.forEach(
               (el: IGameStep) =>
                 (el.completed = el.id < this.stepper.selectedIndex + 1)

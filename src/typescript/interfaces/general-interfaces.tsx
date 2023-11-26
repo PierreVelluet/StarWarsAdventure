@@ -16,5 +16,11 @@ export interface IState {
   droid: IDroid | null;
   vehicle: IVehicle | null;
   location: ILocation | null;
-  gameStep: IGameStep;
+  currentGameStep: IGameStep;
+}
+
+export interface LocalStorageSaveOptions {
+  key: string;
+  data: any;
+  expirationMins?: number;
 }

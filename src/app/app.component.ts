@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { delay } from 'rxjs/operators';
 import { LoadingStateService } from './services/globalState/loading-state.service';
+import { StoreService } from './services/globalState/store.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,13 @@ import { LoadingStateService } from './services/globalState/loading-state.servic
 export class AppComponent {
   title = 'StarWarsAventure';
   loading: boolean = false;
-  constructor(private _loading: LoadingStateService) {}
+  constructor(
+    private _loading: LoadingStateService,
+    private _globalStateService: StoreService
+  ) {}
   ngOnInit() {
     this.listenToLoading();
+    this._globalStateService.retrieveLocalStorageState();
   }
 
   listenToLoading(): void {

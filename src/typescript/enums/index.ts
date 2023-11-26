@@ -11,7 +11,7 @@ export enum StepType {
   Game,
 }
 
-export enum ChangeStepDirection {
+export enum SteppingDirection {
   Forward = +1,
   Backward = -1,
 }

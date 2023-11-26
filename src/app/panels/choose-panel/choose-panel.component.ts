@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
 
-import { IGameStep } from 'src/typescript/interfaces/state-interface';
+import { IGameStep } from 'src/typescript/interfaces/general-interfaces';
 
 import { CharactersDataService } from '../../services/data/characters-data.service';
 import { UtilsService } from '../../services/utils.service';
-import { GlobalStateService } from '../../services/globalState/global-state.service';
-import { StepType } from 'src/typescript/enums';
+import { StoreService } from '../../services/globalState/store.service';
+import { SteppingDirection, StepType } from 'src/typescript/enums';
 
 @Component({
   selector: 'app-choose-panel',
@@ -20,15 +20,15 @@ export class ChoosingPanelComponent {
   private stepIsChoosingType: boolean = false;
 
   constructor(
-    private globalStateService: GlobalStateService,
+    private globalStateService: StoreService,
     private dataService: CharactersDataService,
     private utilsService: UtilsService
   ) {
     this.objs = [];
-    this.generalState = this.globalStateService.getGeneralState();
-    this.globalStateService.globalSharedState$.subscribe((value) => {
-      this.currentStep = value.gameStep;
-      this.stepIsChoosingType = value.gameStep.type == StepType.Choice;
+    this.generalState = this.globalStateService.getState();
+    this.globalStateService.sharedState$.subscribe((value) => {
+      this.currentStep = value.currentGameStep;
+      this.stepIsChoosingType = value.currentGameStep.type == StepType.Choice;
     });
   }
 
@@ -63,9 +63,10 @@ export class ChoosingPanelComponent {
   chosenObjectHandler(starwarsEntity: IStarwarsEntity) {
     if (!this.stepIsChoosingType) return;
 
-    this.globalStateService.updateEntityAndMoveNextStep(
+    this.globalStateService.updateStateWithParams(
       this.currentStep.associatedStarwarsEntity,
-      starwarsEntity
+      starwarsEntity,
+      SteppingDirection.Forward
     );
 
     this.getStarwarsEntitesByStep();

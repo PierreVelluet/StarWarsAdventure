@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { ScrollingTextComponent } from 'src/app/component/scrolling-text/scrolling-text.component';
 import { WelcomingSteps } from 'src/typescript/enums';
-import { GlobalStateService } from 'src/app/services/globalState/global-state.service';
-import { ChangeStepDirection } from 'src/typescript/enums';
+import { StoreService } from 'src/app/services/globalState/store.service';
+import { SteppingDirection } from 'src/typescript/enums';
 
 @Component({
   selector: 'app-welcome-panel',
@@ -20,7 +20,7 @@ export class WelcomePanelComponent {
   public isAnimated: boolean = false;
   public isbuttonInAnimationNeeded: boolean = true;
 
-  constructor(private globalStateService: GlobalStateService) {}
+  constructor(private globalStateService: StoreService) {}
 
   ngOnInit() {
     this.starWarsAnimation();
@@ -52,7 +52,11 @@ export class WelcomePanelComponent {
 
   // End the introduction and set-up the game
   startButtonHandler() {
-    this.globalStateService.changeStep(ChangeStepDirection.Forward);
+    this.globalStateService.updateStateWithParams(
+      null,
+      null,
+      SteppingDirection.Forward
+    );
   }
 
   //Animations for the logo and title present in step1

@@ -14,11 +14,11 @@ import { ChoosingModalComponent } from './component/choosing-modal/choosing-moda
 import { ChoosingStepper } from './component/choosing-stepper/choosing-stepper.component';
 import { WelcomePanelComponent } from './panels/welcome-panel/welcome-panel.component';
 
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+
 import { GlobalErrorHandler } from './global-error-handler';
 import { ServerErrorInterceptor } from './server-error.interceptor';
 import { HttpRequestInterceptor } from './http-request-interceptor';
-
-import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ViewsRouterComponent } from './panels/panels-router/panels-router.component';
 import { ScrollingTextComponent } from './component/scrolling-text/scrolling-text.component';
 

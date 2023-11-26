@@ -33,6 +33,5 @@ export class LoadingStateService {
     if (this.loadingMap.size === 0) {
       this.loadingSub.next(false);
     }
-    console.log('Loading state has been set to: ', newLoadingState);
   }
 }
