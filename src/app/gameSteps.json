@@ -4,7 +4,8 @@
     "name": "Welcoming and rules",
     "associatedStarwarsEntity": "",
     "completed": false,
-    "type": 0
+    "type": 0,
+    "entitiesPreviouslyFetched": null
   },
   {
     "id": 1,
@@ -13,7 +14,8 @@
     "stepperLabel": "Character",
     "choiceNumber": 0,
     "completed": false,
-    "type": 1
+    "type": 1,
+    "entitiesPreviouslyFetched": null
   },
   {
     "id": 2,
@@ -22,7 +24,8 @@
     "stepperLabel": "Vehicle",
     "choiceNumber": 1,
     "completed": false,
-    "type": 1
+    "type": 1,
+    "entitiesPreviouslyFetched": null
   },
   {
     "id": 3,
@@ -31,7 +34,8 @@
     "stepperLabel": "Droid",
     "choiceNumber": 2,
     "completed": false,
-    "type": 1
+    "type": 1,
+    "entitiesPreviouslyFetched": null
   },
   {
     "id": 4,
@@ -40,13 +44,15 @@
     "stepperLabel": "Location",
     "choiceNumber": 3,
     "completed": false,
-    "type": 1
+    "type": 1,
+    "entitiesPreviouslyFetched": null
   },
   {
     "id": 5,
     "name": "Game in progress",
     "associatedStarwarsEntity": "",
     "completed": false,
-    "type": 2
+    "type": 2,
+    "entitiesPreviouslyFetched": null
   }
 ]

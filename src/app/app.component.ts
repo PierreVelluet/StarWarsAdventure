@@ -17,7 +17,7 @@ export class AppComponent {
   ) {}
   ngOnInit() {
     this.listenToLoading();
-    this._globalStateService.retrieveLocalStorageState();
+    this._globalStateService.updateStateWithCachedOne();
   }
 
   listenToLoading(): void {

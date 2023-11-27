@@ -14,8 +14,7 @@ import { SteppingDirection, StepType } from 'src/typescript/enums';
   styleUrls: ['./choose-panel.component.css'],
 })
 export class ChoosingPanelComponent {
-  public generalState: any;
-  objs: any[];
+  objs: IStarwarsEntity[] | any;
   public currentStep!: IGameStep;
   private stepIsChoosingType: boolean = false;
 
@@ -25,7 +24,6 @@ export class ChoosingPanelComponent {
     private utilsService: UtilsService
   ) {
     this.objs = [];
-    this.generalState = this.globalStateService.getState();
     this.globalStateService.sharedState$.subscribe((value) => {
       this.currentStep = value.currentGameStep;
       this.stepIsChoosingType = value.currentGameStep.type == StepType.Choice;
@@ -39,6 +37,11 @@ export class ChoosingPanelComponent {
   getStarwarsEntitesByStep(): void {
     if (!this.stepIsChoosingType) return;
 
+    if (this.globalStateService.isEntitiesAlreadyFetched()) {
+      this.objs = this.currentStep.entitiesPreviouslyFetched;
+      return;
+    }
+
     this.dataService
       .getStarwarsEntites(this.currentStep.associatedStarwarsEntity + 's')
       .subscribe({
@@ -48,6 +51,9 @@ export class ChoosingPanelComponent {
             .map((el: IStarwarsEntity, index: number) => {
               return this.addDelayKeyToEntity(el, index);
             });
+        },
+        complete: () => {
+          this.globalStateService.updateEntitiesPreviouslyFetched(this.objs);
         },
       });
   }

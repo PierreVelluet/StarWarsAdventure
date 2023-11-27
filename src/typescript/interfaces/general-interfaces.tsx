@@ -1,5 +1,11 @@
 import { StepType } from "../enums";
-import { ICharacter, IDroid, IVehicle, ILocation } from "./starwars-interfaces";
+import {
+  ICharacter,
+  IDroid,
+  IVehicle,
+  ILocation,
+  IStarwarsEntity,
+} from "./starwars-interfaces";
 
 export interface IGameStep {
   id: number;
@@ -8,6 +14,7 @@ export interface IGameStep {
   stepperLabel?: string;
   completed: boolean;
   type: StepType;
+  entitiesPreviouslyFetched: IStarwarsEntity[] | null | undefined;
 }
 
 export interface IState {
@@ -17,6 +24,7 @@ export interface IState {
   vehicle: IVehicle | null;
   location: ILocation | null;
   currentGameStep: IGameStep;
+  localStorageStoreKey: string;
 }
 
 export interface LocalStorageSaveOptions {

@@ -21,7 +21,8 @@ export class StoreService {
     droid: null,
     vehicle: null,
     location: null,
-    currentGameStep: steps[0],
+    currentGameStep: steps[1],
+    localStorageStoreKey: 'starwarsAdventureKey',
   });
   sharedState$: Observable<IState> = this.state.asObservable();
 
@@ -34,9 +35,26 @@ export class StoreService {
     return this.state.getValue();
   }
 
-  // Set the state
-  public setState(newStore: IState) {
-    this.state.next(newStore);
+  // Set the state && stock in in localStorage
+  public setState(newState: IState) {
+    this.state.next(newState);
+
+    // Save the data in the browser cache
+    this._cacheService.save({
+      key: newState.localStorageStoreKey,
+      data: newState,
+    });
+    console.log('state updated', newState);
+  }
+
+  // Update entities fetched in state
+  public updateEntitiesPreviouslyFetched(entities: IStarwarsEntity[]) {
+    const newState: IState = this.getState();
+    newState.currentGameStep = {
+      ...newState.currentGameStep,
+      entitiesPreviouslyFetched: entities,
+    };
+    this.setState(newState);
   }
 
   // Return a copy of the provided state with the new current step provided
@@ -44,11 +62,13 @@ export class StoreService {
     oldState: IState,
     steppingDirection: SteppingDirection
   ): IState {
-    const newState: IState = {
+    let newState: IState = {
       ...oldState,
-      currentGameStep:
-        this.gameSteps[this.state.value.currentGameStep.id + steppingDirection],
     };
+
+    newState.currentGameStep =
+      this.gameSteps[this.state.value.currentGameStep.id + steppingDirection];
+
     return newState;
   }
 
@@ -90,19 +110,14 @@ export class StoreService {
     if (this.getState() != newState) {
       // Save the data in the store
       this.setState(newState);
-      // Save the data in the browser cache
-      this._cacheService.save({
-        key: 'starwarsAdventureKey',
-        data: newState,
-      });
-      console.log('newState', newState);
     }
   }
 
-  // Retrieve the state in the local storage, and update the current one with it, if different.
-  public retrieveLocalStorageState(): void {
+  // Retrieve the state in the local storage;
+  public retrieveLocalStorageState(): IState | null {
+    let localStorageStore: IState | null = null;
     let localStrorageString: string | null = localStorage.getItem(
-      'starwarsAdventureKey'
+      this.getState().localStorageStoreKey
     );
 
     if (localStrorageString) {
@@ -110,13 +125,38 @@ export class StoreService {
       const keysArray = Object.keys(localStorageObj);
       keysArray?.forEach((keyName: string) => {
         if (keyName == 'value') {
-          const localStorageStore: IState = JSON.parse(
-            localStorageObj[keyName]
-          );
-          if (localStorageStore) this.setState(localStorageStore);
-          return;
+          localStorageStore = JSON.parse(localStorageObj[keyName]);
         }
       });
+    }
+
+    return localStorageStore;
+  }
+
+  // Check if there is entities previously fetched in the state, and if they match with the current step.
+  isEntitiesAlreadyFetched(): boolean {
+    const entitiesPreviouslyFetched: IStarwarsEntity[] | null | undefined =
+      this.getState().currentGameStep.entitiesPreviouslyFetched;
+    if (
+      entitiesPreviouslyFetched &&
+      entitiesPreviouslyFetched.some(
+        (entity: IStarwarsEntity) =>
+          entity.type ==
+          this.getState().currentGameStep.associatedStarwarsEntity
+      )
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // Set the state with the cached one, if it exists
+  updateStateWithCachedOne(): void {
+    const cachedState: IState | null = this.retrieveLocalStorageState();
+
+    if (cachedState !== null && cachedState !== this.getState()) {
+      this.setState(cachedState);
     }
   }
 }
