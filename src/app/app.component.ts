@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { delay } from 'rxjs/operators';
+
 import { LoadingStateService } from './services/globalState/loading-state.service';
 import { StoreService } from './services/globalState/store.service';
 
@@ -9,8 +10,7 @@ import { StoreService } from './services/globalState/store.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'StarWarsAventure';
-  loading: boolean = false;
+  public loading: boolean = false;
   constructor(
     private _loading: LoadingStateService,
     private _globalStateService: StoreService

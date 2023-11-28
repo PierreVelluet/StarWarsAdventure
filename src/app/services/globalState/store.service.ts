@@ -21,7 +21,7 @@ export class StoreService {
     droid: null,
     vehicle: null,
     location: null,
-    currentGameStep: steps[0],
+    currentGameStep: steps[1],
     localStorageStoreKey: 'starwarsAdventureKey',
   });
   sharedState$: Observable<IState> = this.state.asObservable();

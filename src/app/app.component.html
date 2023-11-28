@@ -1,5 +1,8 @@
 <!-- * * * * * * * * * * * * * * THIS IS ROOT HTML FILE * * * * * * * * * * * * * * * * * -->
-
+<div *ngIf="loading" class="loading-container flex-content-center">
+  <mat-progress-spinner class="spinner" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+</div>
 <div class="content" role="main">
   <!-- <app-navbar></app-navbar> -->
   <app-views-router></app-views-router>

@@ -4,6 +4,11 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './menus/navbar/navbar.component';
@@ -13,16 +18,11 @@ import { ChoosingPanelComponent } from './panels/choose-panel/choose-panel.compo
 import { ChoosingModalComponent } from './component/choosing-modal/choosing-modal.component';
 import { ChoosingStepper } from './component/choosing-stepper/choosing-stepper.component';
 import { WelcomePanelComponent } from './panels/welcome-panel/welcome-panel.component';
-
-import { LazyLoadImageModule } from 'ng-lazyload-image';
-
 import { GlobalErrorHandler } from './global-error-handler';
 import { ServerErrorInterceptor } from './server-error.interceptor';
 import { HttpRequestInterceptor } from './http-request-interceptor';
 import { ViewsRouterComponent } from './panels/panels-router/panels-router.component';
 import { ScrollingTextComponent } from './component/scrolling-text/scrolling-text.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [AppComponent, ViewsRouterComponent, ChoosingPanelComponent],
@@ -41,6 +41,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ScrollingTextComponent,
     MatButtonModule,
     MatTooltipModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
