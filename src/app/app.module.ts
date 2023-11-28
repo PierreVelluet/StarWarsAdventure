@@ -22,6 +22,7 @@ import { HttpRequestInterceptor } from './http-request-interceptor';
 import { ViewsRouterComponent } from './panels/panels-router/panels-router.component';
 import { ScrollingTextComponent } from './component/scrolling-text/scrolling-text.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [AppComponent, ViewsRouterComponent, ChoosingPanelComponent],
@@ -38,7 +39,8 @@ import { MatButtonModule } from '@angular/material/button';
     LazyLoadImageModule,
     WelcomePanelComponent,
     ScrollingTextComponent,
-    MatButtonModule
+    MatButtonModule,
+    MatTooltipModule,
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
