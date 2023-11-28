@@ -1,8 +1,9 @@
-<!-- <div class="scenes" tabindex="0"> -->
 <div class="scene-1">
   <app-welcome-panel
     *ngIf="
-      currentStepType === allStepTypes.Introduction || (currentStepType === allStepTypes.Choice && !transitionProcessed)
+      currentStepType === allStepTypes.Introduction ||
+      (currentStepType === allStepTypes.Choice &&
+        currentTransitiontype === allTransitionTypes.Introduction)
     "
   ></app-welcome-panel>
 </div>
@@ -17,5 +18,3 @@
     *ngIf="currentStepType === allStepTypes.Choice"
   ></app-choose-panel>
 </div>
-<!-- </div> -->
-<!-- *ngIf="currentStepType === allStepTypes.Introduction" -->

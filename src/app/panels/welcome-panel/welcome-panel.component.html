@@ -41,17 +41,16 @@
     [ngClass]="[
       'start-button-container',
       'animate__animated',
-      isbuttonInAnimationNeeded ? 'animate__fadeIn' : '',
-      isAnimated ? 'animate__headShake' : ''
+      isbuttonInAnimationNeeded ? 'animate__fadeIn' : ''
     ]"
   >
     <button
-      (click)="startButtonHandler()"
+      (click)="!startBtnClicked ? startButtonHandler() : null"
       [ngClass]="['start-button']"
       mat-raised-button
       color="accent"
     >
-      Start !
+      {{ startBtnNeeded ? "Start !" : "" }}
     </button>
   </div>
 </div>

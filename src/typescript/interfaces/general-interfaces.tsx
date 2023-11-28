@@ -1,4 +1,4 @@
-import { StepType } from "../enums";
+import { TransitionType, StepType } from "../enums";
 import {
   ICharacter,
   IDroid,
@@ -13,7 +13,8 @@ export interface IGameStep {
   associatedStarwarsEntity: string;
   stepperLabel?: string;
   completed: boolean;
-  type: StepType;
+  currentStepType: StepType;
+  currentTransitiontype?: TransitionType;
   entitiesPreviouslyFetched?: IStarwarsEntity[] | null | undefined;
   numberOfReroll?: number;
 }

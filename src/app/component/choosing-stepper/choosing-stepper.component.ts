@@ -23,7 +23,7 @@ export class ChoosingStepper {
 
   constructor(private globalStateService: StoreService) {
     this.gameSteps = steps?.filter(
-      (el: IGameStep) => el.type == StepType.Choice
+      (el: IGameStep) => el.currentStepType == StepType.Choice
     );
   }
 
@@ -32,7 +32,7 @@ export class ChoosingStepper {
     // "https://stackoverflow.com/questions/71978152/how-can-i-fix-this-specific-ng0100-expressionchangedafterithasbeencheckederror"
     setTimeout(() => {
       this.globalStateService.sharedState$.subscribe((value) => {
-        if (value.currentGameStep.type == StepType.Choice) {
+        if (value.currentGameStep.currentStepType == StepType.Choice) {
           (this.stepper.selectedIndex = value.currentGameStep.id - 1),
             this.gameSteps.forEach(
               (el: IGameStep) =>

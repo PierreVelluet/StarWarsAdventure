@@ -16,9 +16,11 @@ import { SteppingDirection } from 'src/typescript/enums';
 })
 export class WelcomePanelComponent {
   public allWelcomingSteps = WelcomingSteps;
-  public currentWelcomingStep = WelcomingSteps.Step3;
+  public currentWelcomingStep = WelcomingSteps.Step0;
   public isAnimated: boolean = false;
   public isbuttonInAnimationNeeded: boolean = true;
+  public startBtnNeeded: boolean = true;
+  public startBtnClicked: boolean = false;
 
   constructor(private globalStateService: StoreService) {}
 
@@ -52,11 +54,19 @@ export class WelcomePanelComponent {
 
   // End the introduction and set-up the game
   startButtonHandler() {
+    // Prevent startButton to be clicked multiple times.
+    this.startBtnClicked = true;
+
     this.globalStateService.updateStateWithParams(
       null,
       null,
       SteppingDirection.Forward
     );
+
+    // Workaround to make the button in a good shape during transition
+    setTimeout(() => {
+      this.startBtnNeeded = false;
+    }, 1000);
   }
 
   //Animations for the logo and title present in step1

@@ -4,7 +4,8 @@
     "name": "Welcoming and rules",
     "associatedStarwarsEntity": "",
     "completed": false,
-    "type": 0
+    "currentStepType": 0,
+    "currentTransitiontype": 0
   },
   {
     "id": 1,
@@ -13,9 +14,10 @@
     "stepperLabel": "Character",
     "choiceNumber": 0,
     "completed": false,
-    "type": 1,
+    "currentStepType": 1,
     "entitiesPreviouslyFetched": null,
-    "numberOfReroll": 1
+    "numberOfReroll": 1,
+    "currentTransitiontype": 1
   },
   {
     "id": 2,
@@ -24,9 +26,10 @@
     "stepperLabel": "Vehicle",
     "choiceNumber": 1,
     "completed": false,
-    "type": 1,
+    "currentStepType": 1,
     "entitiesPreviouslyFetched": null,
-    "numberOfReroll": 1
+    "numberOfReroll": 1,
+    "currentTransitiontype": 1
   },
   {
     "id": 3,
@@ -35,9 +38,10 @@
     "stepperLabel": "Droid",
     "choiceNumber": 2,
     "completed": false,
-    "type": 1,
+    "currentStepType": 1,
     "entitiesPreviouslyFetched": null,
-    "numberOfReroll": 1
+    "numberOfReroll": 1,
+    "currentTransitiontype": 1
   },
   {
     "id": 4,
@@ -46,15 +50,17 @@
     "stepperLabel": "Location",
     "choiceNumber": 3,
     "completed": false,
-    "type": 1,
+    "currentStepType": 1,
     "entitiesPreviouslyFetched": null,
-    "numberOfReroll": 1
+    "numberOfReroll": 1,
+    "currentTransitiontype": 1
   },
   {
     "id": 5,
     "name": "Game in progress",
     "associatedStarwarsEntity": "",
     "completed": false,
-    "type": 2
+    "currentStepType": 2,
+    "currentTransitiontype": 1
   }
 ]

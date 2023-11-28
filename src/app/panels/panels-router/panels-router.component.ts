@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { IState } from 'src/typescript/interfaces/general-interfaces';
-import { StepType } from 'src/typescript/enums';
+import { TransitionType, StepType } from 'src/typescript/enums';
 
 import { StoreService } from '../../services/globalState/store.service';
 
@@ -12,20 +12,39 @@ import { StoreService } from '../../services/globalState/store.service';
 })
 export class ViewsRouterComponent {
   public allStepTypes = StepType;
-  public currentStepType: StepType = StepType.Introduction;
-  public transitionProcessed: boolean = false;
+  public currentStepType?: StepType;
+
+  public allTransitionTypes = TransitionType;
+  public currentTransitiontype?: TransitionType;
 
   constructor(private globalStateService: StoreService) {
     this.globalStateService.sharedState$.subscribe((value: IState) => {
-      if (value.currentGameStep.type == this.currentStepType) return;
-
-       this.currentStepType = value.currentGameStep.type;
-      if (this.currentStepType == StepType.Choice) {
-        setTimeout(() => {
-        
-          this.transitionProcessed = true;
-        }, 2000);
-      }
+      this.currentStepType = value.currentGameStep.currentStepType;
+      this.setTransition(value.currentGameStep.currentStepType);
     });
+  }
+
+  ngOnInit(): void {
+    this.currentTransitiontype =
+      this.globalStateService.getState().currentGameStep.currentTransitiontype;
+  }
+
+  setTransition(currentStepType: StepType) {
+    switch (currentStepType) {
+      case StepType.Introduction: {
+        return;
+      }
+      case StepType.Choice: {
+        setTimeout(() => {
+          this.currentTransitiontype = TransitionType.Choice;
+        }, 2000);
+        return;
+      }
+      case StepType.Game: {
+        return;
+      }
+      default:
+        return;
+    }
   }
 }

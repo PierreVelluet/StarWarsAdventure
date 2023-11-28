@@ -8,23 +8,13 @@
   inset: 0;
 }
 
-.scene-1 {
-  /* background-image: url(https://assets.codepen.io/77020/sw-horizontal-wipe-scene-1.jpg); */
-}
-
 .scene-2 {
-  /* background-image: url(https://assets.codepen.io/77020/sw-horizontal-wipe-scene-2.jpg); */
-  -webkit-mask-image: linear-gradient(to left, transparent 47.5%, #fff 52.5%);
-  -webkit-mask-size: 210%;
-  -webkit-mask-position: left;
-}
-
-.scenes:is(:hover, :focus) .scene-2 {
-  /* -webkit-mask-position: right;
-  transition: -webkit-mask-position 2s linear; */
+  mask-image: linear-gradient(to left, transparent 47.5%, #fff 52.5%);
+  mask-size: 210%;
+  mask-position: right;
 }
 
 .transitionOn {
-  -webkit-mask-position: left;
+  mask-position: left;
   transition: -webkit-mask-position 2s linear;
 }

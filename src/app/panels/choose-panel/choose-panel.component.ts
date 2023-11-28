@@ -33,7 +33,7 @@ export class ChoosingPanelComponent {
     });
     this.globalStateService.sharedState$.subscribe((value) => {
       this.currentStep = value.currentGameStep;
-      this.stepIsChoosingType = value.currentGameStep.type == StepType.Choice;
+      this.stepIsChoosingType = value.currentGameStep.currentStepType == StepType.Choice;
       this.numberOfReroll = value?.currentGameStep?.numberOfReroll ?? 0;
     });
   }

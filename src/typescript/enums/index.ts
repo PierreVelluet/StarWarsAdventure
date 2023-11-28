@@ -15,3 +15,9 @@ export enum SteppingDirection {
   Forward = +1,
   Backward = -1,
 }
+
+export enum TransitionType {
+  Introduction,
+  Choice,
+  Game,
+}
