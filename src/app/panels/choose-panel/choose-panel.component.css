@@ -19,3 +19,9 @@
   font-weight: 700;
   font-size: 25px;
 }
+
+.rerollBtnContainer {
+  position: absolute;
+  left: 6%;
+  top: 55%;
+}

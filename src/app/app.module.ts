@@ -21,9 +21,10 @@ import { ServerErrorInterceptor } from './server-error.interceptor';
 import { HttpRequestInterceptor } from './http-request-interceptor';
 import { ViewsRouterComponent } from './panels/panels-router/panels-router.component';
 import { ScrollingTextComponent } from './component/scrolling-text/scrolling-text.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [AppComponent, ChoosingPanelComponent, ViewsRouterComponent],
+  declarations: [AppComponent, ViewsRouterComponent, ChoosingPanelComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -37,6 +38,7 @@ import { ScrollingTextComponent } from './component/scrolling-text/scrolling-tex
     LazyLoadImageModule,
     WelcomePanelComponent,
     ScrollingTextComponent,
+    MatButtonModule
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },

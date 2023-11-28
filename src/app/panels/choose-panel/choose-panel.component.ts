@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
 
+import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
 import { IGameStep } from 'src/typescript/interfaces/general-interfaces';
+import { LoadingStateService } from 'src/app/services/globalState/loading-state.service';
+import { SteppingDirection, StepType } from 'src/typescript/enums';
 
 import { CharactersDataService } from '../../services/data/characters-data.service';
 import { UtilsService } from '../../services/utils.service';
 import { StoreService } from '../../services/globalState/store.service';
-import { SteppingDirection, StepType } from 'src/typescript/enums';
 
 @Component({
   selector: 'app-choose-panel',
@@ -14,19 +15,26 @@ import { SteppingDirection, StepType } from 'src/typescript/enums';
   styleUrls: ['./choose-panel.component.css'],
 })
 export class ChoosingPanelComponent {
-  objs: IStarwarsEntity[] | any;
+  objs: IStarwarsEntity[] | any = [];
   public currentStep!: IGameStep;
   private stepIsChoosingType: boolean = false;
+  public numberOfReroll: number = 0;
+  public isLoading: boolean = false;
+  public isClickPrevented: boolean = true;
 
   constructor(
     private globalStateService: StoreService,
     private dataService: CharactersDataService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private loadingStateService: LoadingStateService
   ) {
-    this.objs = [];
+    this.loadingStateService.loadingObs$.subscribe((value) => {
+      this.isLoading = value;
+    });
     this.globalStateService.sharedState$.subscribe((value) => {
       this.currentStep = value.currentGameStep;
       this.stepIsChoosingType = value.currentGameStep.type == StepType.Choice;
+      this.numberOfReroll = value?.currentGameStep?.numberOfReroll ?? 0;
     });
   }
 
@@ -34,14 +42,8 @@ export class ChoosingPanelComponent {
     this.getStarwarsEntitesByStep();
   }
 
-  getStarwarsEntitesByStep(): void {
-    if (!this.stepIsChoosingType) return;
-
-    if (this.globalStateService.isEntitiesAlreadyFetched()) {
-      this.objs = this.currentStep.entitiesPreviouslyFetched;
-      return;
-    }
-
+  fetchAndAssignEntities(reroll: boolean = false) {
+    this.isClickPrevented = true;
     this.dataService
       .getStarwarsEntites(this.currentStep.associatedStarwarsEntity + 's')
       .subscribe({
@@ -53,9 +55,32 @@ export class ChoosingPanelComponent {
             });
         },
         complete: () => {
-          this.globalStateService.updateEntitiesPreviouslyFetched(this.objs);
+          this.globalStateService.updateEntitiesPreviouslyFetched(
+            this.objs,
+            reroll
+          );
+          this.allowClicksActionsAfterDelay();
         },
       });
+  }
+
+  getStarwarsEntitesByStep(): void {
+    if (!this.stepIsChoosingType) return;
+
+    if (this.globalStateService.isEntitiesAlreadyFetched()) {
+      this.objs = this.currentStep.entitiesPreviouslyFetched;
+      this.allowClicksActionsAfterDelay();
+      return;
+    }
+
+    this.fetchAndAssignEntities();
+  }
+
+  allowClicksActionsAfterDelay() {
+    // Prevent the element to be clicked until the animation end.
+    setTimeout(() => {
+      this.isClickPrevented = false;
+    }, 1500);
   }
 
   // Add the delay key based on the index, to the entity to display.
@@ -66,7 +91,7 @@ export class ChoosingPanelComponent {
     };
   }
 
-  chosenObjectHandler(starwarsEntity: IStarwarsEntity) {
+  chooseActionHandler(starwarsEntity: IStarwarsEntity) {
     if (!this.stepIsChoosingType) return;
 
     this.globalStateService.updateStateWithParams(
@@ -76,5 +101,9 @@ export class ChoosingPanelComponent {
     );
 
     this.getStarwarsEntitesByStep();
+  }
+
+  rerollActionHandler() {
+    this.fetchAndAssignEntities(true);
   }
 }

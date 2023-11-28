@@ -14,7 +14,8 @@ export interface IGameStep {
   stepperLabel?: string;
   completed: boolean;
   type: StepType;
-  entitiesPreviouslyFetched: IStarwarsEntity[] | null | undefined;
+  entitiesPreviouslyFetched?: IStarwarsEntity[] | null | undefined;
+  numberOfReroll?: number;
 }
 
 export interface IState {

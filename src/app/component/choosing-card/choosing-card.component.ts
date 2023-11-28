@@ -24,7 +24,6 @@ export class ChoosingCardComponent {
   lazyLoadImage: string;
   defaultImage: string;
   imageToShowOnError: string;
-  public isClickPrevented: boolean = true;
   public isLoading: boolean = false;
 
   constructor(
@@ -43,6 +42,7 @@ export class ChoosingCardComponent {
   }
 
   @Input() public obj!: IStarwarsEntity;
+  @Input() public isClickPrevented!: boolean;
 
   @Output() chosenObject: EventEmitter<IStarwarsEntity> = new EventEmitter();
 
@@ -55,11 +55,6 @@ export class ChoosingCardComponent {
       this.obj.description,
       250
     );
-
-    // Prevent the element to be clicked until the animation end.
-    setTimeout(() => {
-      this.isClickPrevented = false;
-    }, 1500);
   }
 
   private assertInputsProvided(): void {

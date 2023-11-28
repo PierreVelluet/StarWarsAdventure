@@ -4,8 +4,7 @@
     "name": "Welcoming and rules",
     "associatedStarwarsEntity": "",
     "completed": false,
-    "type": 0,
-    "entitiesPreviouslyFetched": null
+    "type": 0
   },
   {
     "id": 1,
@@ -15,7 +14,8 @@
     "choiceNumber": 0,
     "completed": false,
     "type": 1,
-    "entitiesPreviouslyFetched": null
+    "entitiesPreviouslyFetched": null,
+    "numberOfReroll": 1
   },
   {
     "id": 2,
@@ -25,7 +25,8 @@
     "choiceNumber": 1,
     "completed": false,
     "type": 1,
-    "entitiesPreviouslyFetched": null
+    "entitiesPreviouslyFetched": null,
+    "numberOfReroll": 1
   },
   {
     "id": 3,
@@ -35,7 +36,8 @@
     "choiceNumber": 2,
     "completed": false,
     "type": 1,
-    "entitiesPreviouslyFetched": null
+    "entitiesPreviouslyFetched": null,
+    "numberOfReroll": 1
   },
   {
     "id": 4,
@@ -45,14 +47,14 @@
     "choiceNumber": 3,
     "completed": false,
     "type": 1,
-    "entitiesPreviouslyFetched": null
+    "entitiesPreviouslyFetched": null,
+    "numberOfReroll": 1
   },
   {
     "id": 5,
     "name": "Game in progress",
     "associatedStarwarsEntity": "",
     "completed": false,
-    "type": 2,
-    "entitiesPreviouslyFetched": null
+    "type": 2
   }
 ]

@@ -48,12 +48,29 @@ export class StoreService {
   }
 
   // Update entities fetched in state
-  public updateEntitiesPreviouslyFetched(entities: IStarwarsEntity[]) {
+  public updateEntitiesPreviouslyFetched(
+    entities: IStarwarsEntity[],
+    reroll: boolean
+  ) {
     const newState: IState = this.getState();
     newState.currentGameStep = {
       ...newState.currentGameStep,
       entitiesPreviouslyFetched: entities,
+      numberOfReroll: reroll ? 0 : newState.currentGameStep.numberOfReroll,
     };
+    this.setState(newState);
+  }
+
+  // Diminish the reroll counter
+  public updateRerollCounter() {
+    const newState: IState = {
+      ...this.getState(),
+      currentGameStep: {
+        ...this.getState().currentGameStep,
+        numberOfReroll: 1,
+      },
+    };
+
     this.setState(newState);
   }
 
