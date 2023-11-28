@@ -16,7 +16,7 @@ import { SteppingDirection } from 'src/typescript/enums';
 })
 export class WelcomePanelComponent {
   public allWelcomingSteps = WelcomingSteps;
-  public currentWelcomingStep = WelcomingSteps.Step0;
+  public currentWelcomingStep = WelcomingSteps.Step3;
   public isAnimated: boolean = false;
   public isbuttonInAnimationNeeded: boolean = true;
 

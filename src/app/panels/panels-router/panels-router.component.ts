@@ -12,11 +12,20 @@ import { StoreService } from '../../services/globalState/store.service';
 })
 export class ViewsRouterComponent {
   public allStepTypes = StepType;
-  public currentStepType?: StepType;
+  public currentStepType: StepType = StepType.Introduction;
+  public transitionProcessed: boolean = false;
 
   constructor(private globalStateService: StoreService) {
     this.globalStateService.sharedState$.subscribe((value: IState) => {
-      this.currentStepType = value.currentGameStep.type;
+      if (value.currentGameStep.type == this.currentStepType) return;
+
+       this.currentStepType = value.currentGameStep.type;
+      if (this.currentStepType == StepType.Choice) {
+        setTimeout(() => {
+        
+          this.transitionProcessed = true;
+        }, 2000);
+      }
     });
   }
 }

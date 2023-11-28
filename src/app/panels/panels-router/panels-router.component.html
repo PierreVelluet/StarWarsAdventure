@@ -1,6 +1,21 @@
-<app-welcome-panel
-  *ngIf="currentStepType === allStepTypes.Introduction"
-></app-welcome-panel>
-<app-choose-panel
-  *ngIf="currentStepType === allStepTypes.Choice"
-></app-choose-panel>
+<!-- <div class="scenes" tabindex="0"> -->
+<div class="scene-1">
+  <app-welcome-panel
+    *ngIf="
+      currentStepType === allStepTypes.Introduction || (currentStepType === allStepTypes.Choice && !transitionProcessed)
+    "
+  ></app-welcome-panel>
+</div>
+
+<div
+  [class]="[
+    'scene-2',
+    currentStepType === allStepTypes.Choice ? 'transitionOn' : ''
+  ]"
+>
+  <app-choose-panel
+    *ngIf="currentStepType === allStepTypes.Choice"
+  ></app-choose-panel>
+</div>
+<!-- </div> -->
+<!-- *ngIf="currentStepType === allStepTypes.Introduction" -->

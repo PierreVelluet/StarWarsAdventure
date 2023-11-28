@@ -22,7 +22,8 @@
   margin-bottom: 15px;
   background-repeat: no-repeat;
   background-size: auto;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 10px;
+  box-shadow: rgb(0, 102, 255) 0px 20px 60px 0px,
+    rgb(0, 200, 255) 0px 18px 36px -18px;
   /* slice effect start */
   --m: radial-gradient(circle farthest-side at right, #000 99%, #0000) 0 100%/46%
       92% no-repeat,
