@@ -4,7 +4,6 @@ export interface IStarwarsEntity {
   description: string;
   image: string;
   type: string;
-  delay?: string;
 }
 
 export interface ICharacter extends IStarwarsEntity {}

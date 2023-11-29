@@ -1,8 +1,5 @@
-@use "~animate.css/animate.min";
-
 /* All delay classes will take half the time to start */
 :root {
-  --animate-delay: 0.5s;
   user-select: none;
 }
 

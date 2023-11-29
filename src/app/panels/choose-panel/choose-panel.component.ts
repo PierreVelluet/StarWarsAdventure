@@ -49,14 +49,6 @@ export class ChoosingPanelComponent {
     }, 1500);
   }
 
-  // Add the delay key based on the index, to the entity to display.
-  addDelayKeyToEntity(el: IStarwarsEntity, index: number): IStarwarsEntity {
-    return {
-      ...el,
-      delay: `animate__delay-${index}s`,
-    };
-  }
-
   getStarwarsEntites(reroll: boolean = false): void {
     // If it's not a reroll, and the entities are already fetched, do not fetch again ut reassign.
     if (!reroll && this.globalStateService.isEntitiesAlreadyFetched()) {
@@ -73,11 +65,7 @@ export class ChoosingPanelComponent {
       .getStarwarsEntites(this.currentStep.associatedStarwarsEntity + 's')
       .subscribe({
         next: (data: IStarwarsEntity[]) => {
-          this.objs = this.utilsService
-            .keepRandomObjects(3, data)
-            .map((el: IStarwarsEntity, index: number) => {
-              return this.addDelayKeyToEntity(el, index);
-            });
+          this.objs = this.utilsService.keepRandomObjects(3, data);
         },
         complete: () => {
           this.globalStateService.updateEntitiesPreviouslyFetched(

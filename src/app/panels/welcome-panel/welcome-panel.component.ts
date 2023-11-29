@@ -6,6 +6,7 @@ import { ScrollingTextComponent } from 'src/app/component/scrolling-text/scrolli
 import { WelcomingSteps } from 'src/typescript/enums';
 import { StoreService } from 'src/app/services/globalState/store.service';
 import { SteppingDirection } from 'src/typescript/enums';
+import { fadeInAnimation } from 'src/utils/angular-animations';
 
 @Component({
   selector: 'app-welcome-panel',
@@ -13,11 +14,11 @@ import { SteppingDirection } from 'src/typescript/enums';
   styleUrls: ['./welcome-panel.component.css'],
   standalone: true,
   imports: [CommonModule, MatButtonModule, ScrollingTextComponent],
+  animations: [fadeInAnimation],
 })
 export class WelcomePanelComponent {
   public allWelcomingSteps = WelcomingSteps;
   public currentWelcomingStep = WelcomingSteps.Step0;
-  public isAnimated: boolean = false;
   public isbuttonInAnimationNeeded: boolean = true;
   public startBtnNeeded: boolean = true;
   public startBtnClicked: boolean = false;
@@ -26,11 +27,6 @@ export class WelcomePanelComponent {
 
   ngOnInit() {
     this.starWarsAnimation();
-
-    // Animate the button each x seconds
-    setInterval(() => {
-      this.isAnimated = !this.isAnimated;
-    }, 2500);
 
     // Set or unset the in-animation of the button, because of animation conflicts.
     setTimeout(() => {

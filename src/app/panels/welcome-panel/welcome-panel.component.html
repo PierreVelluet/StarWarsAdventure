@@ -1,13 +1,6 @@
 <div class="welcome-panel-container">
   <!-- WelcomingStep 0 -->
-  <div
-    [ngClass]="[
-      'launch-button',
-      'animate__animated',
-      isbuttonInAnimationNeeded ? 'animate__fadeIn' : '',
-      isAnimated ? 'animate__headShake' : ''
-    ]"
-  >
+  <div [ngClass]="['launch-button']" @fadeInAnimation>
     <button
       *ngIf="currentWelcomingStep === allWelcomingSteps.Step0"
       (click)="launchButtonHandler()"
@@ -38,11 +31,8 @@
   <!-- WelcomingStep 3 -->
   <div
     *ngIf="currentWelcomingStep === allWelcomingSteps.Step3"
-    [ngClass]="[
-      'start-button-container',
-      'animate__animated',
-      isbuttonInAnimationNeeded ? 'animate__fadeIn' : ''
-    ]"
+    [ngClass]="['start-button-container']"
+    @fadeInAnimation
   >
     <button
       (click)="!startBtnClicked ? startButtonHandler() : null"

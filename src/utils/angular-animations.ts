@@ -25,3 +25,14 @@ export const choosingCardsListAnimation = trigger(
     ]),
   ]
 );
+
+export const fadeInAnimation = trigger('fadeInAnimation', [
+  transition(':enter', [
+    style({ opacity: 0 }),
+    animate(1000, style({ opacity: 1 })),
+  ]),
+  transition(':leave', [
+    style({ opacity: 1 }),
+    animate(1000, style({ opacity: 0 })),
+  ]),
+]);

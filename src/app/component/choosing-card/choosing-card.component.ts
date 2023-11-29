@@ -72,7 +72,6 @@ export class ChoosingCardComponent {
       disableClose: true,
       autoFocus: true,
       data: this.obj,
-      panelClass: ['animate__animated', 'animate__pulse'],
     });
 
     dialogRef.afterClosed().subscribe((data) => {
