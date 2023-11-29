@@ -6,32 +6,43 @@
   flex-direction: column;
 }
 
-.panelContainer,
-.choosingPanelTitle {
+.panel-container,
+.choosing-panel-title {
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: center;
 }
 
-.choosingPanelTitle {
+.animation-container {
+  display: flex;
+  flex-direction: row;
+  width: 915px;
+  height: 390px;
+}
+
+.animation-container-mock {
+  width: 915px;
+}
+
+.choosing-panel-title {
   margin: 15px 15px;
   font-weight: 700;
   font-size: 25px;
 }
 
-.oppositeContainer,
-.rerollBtnContainer {
+.reroll-button-container-mock,
+.reroll-button-container {
   width: 200px;
 }
 
-.rerollBtnContainer {
- display: flex;
- justify-content: center;
- align-self: center;
- margin-bottom: 70px;
+.reroll-button-container {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  margin-bottom: 70px;
 }
 
-.oppositeContainer {
+.reroll-button-container-mock {
   display: flex;
 }

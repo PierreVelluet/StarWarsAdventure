@@ -1,22 +1,13 @@
-<div
-  [ngClass]="['choose-panel-container', 'animate__animated', 'animate__fadeIn']"
->
-  <h2 class="choosingPanelTitle">Choose your loadout for the adventure</h2>
+<div [ngClass]="['choose-panel-container']">
+  <h2 class="choosing-panel-title">Choose your loadout for the adventure</h2>
   <app-choosing-stepper></app-choosing-stepper>
-  <div class="panelContainer">
-    <div
-      [ngClass]="[
-        'rerollBtnContainer',
-        'animate__animated',
-        'animate__fadeInLeft'
-      ]"
-      *ngIf="objs?.length > 0"
-    >
+  <div class="panel-container">
+    <!-- Start reroll-button-container -->
+    <div [ngClass]="['reroll-button-container']">
       <button
         [disabled]="numberOfReroll == 0 || isLoading || isClickPrevented"
         (click)="rerollActionHandler()"
         mat-raised-button
-        class="rerollBtn"
         color="primary"
         matTooltip="You have access to one reroll for each choosing loadout step. You'll have then access to three others randoms choices"
       >
@@ -24,15 +15,21 @@
         Reroll (x{{ numberOfReroll }})
       </button>
     </div>
-
-    <div class="cards-container" *ngFor="let obj of objs">
-      <app-choosing-card
-        [ngClass]="['animate__animated', 'animate__fadeIn', obj.delay]"
-        (chosenObject)="chooseActionHandler($event)"
-        [obj]="obj"
-        [isClickPrevented]="isClickPrevented"
-      ></app-choosing-card>
+    <!-- Start animation-container -->
+    <div
+      class="animation-container"
+      [@choosingCardsListAnimation]="objs.length"
+    >
+      <div class="cards-container" *ngFor="let obj of objs">
+        <app-choosing-card
+          [ngClass]="['item']"
+          (chosenObject)="chooseActionHandler($event)"
+          [obj]="obj"
+          [isClickPrevented]="isClickPrevented || isLoading"
+        ></app-choosing-card>
+      </div>
     </div>
-    <div class="oppositeContainer"></div>
+    <!-- Start reroll-button-container-mock -->
+    <div class="reroll-button-container-mock"></div>
   </div>
 </div>
