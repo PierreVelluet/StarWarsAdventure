@@ -1,0 +1,38 @@
+.character-detail-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
+
+.character-detail-body {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: -10px;
+}
+
+.character-detail-name {
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  margin-top: -5px;
+}
+
+.character-detail-portrait-container {
+  width: 80px;
+}
+
+.character-detail-portrait {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  align-self: center;
+  margin-right: 10px;
+  transition: transform 0.5s linear;
+}
+
+.character-detail-portrait:hover {
+  transform: scale(1.25);
+}

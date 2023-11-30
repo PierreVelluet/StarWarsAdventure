@@ -21,16 +21,28 @@ export interface IGameStep {
 
 export interface IState {
   loading: boolean;
-  character: ICharacter | null;
-  droid: IDroid | null;
-  vehicle: IVehicle | null;
-  location: ILocation | null;
   currentGameStep: IGameStep;
   localStorageStoreKey: string;
+  mainCharacter: IMainCharacter;
 }
 
 export interface LocalStorageSaveOptions {
   key: string;
   data: any;
   expirationMins?: number;
+}
+
+export interface ICharacteristic {
+  name: string;
+  value: number;
+  image: string;
+  description: string;
+}
+
+export interface IMainCharacter {
+  character: ICharacter | null;
+  vehicle: IVehicle | null;
+  droid: IDroid | null;
+  location: ILocation | null;
+  characteristics: ICharacteristic[];
 }

@@ -23,7 +23,8 @@ import { ServerErrorInterceptor } from './server-error.interceptor';
 import { HttpRequestInterceptor } from './http-request-interceptor';
 import { ViewsRouterComponent } from './panels/panels-router/panels-router.component';
 import { ScrollingTextComponent } from './component/scrolling-text/scrolling-text.component';
-
+import { CharacterDetailCardComponent } from './component/character-detail-card/character-detail-card.component';
+import { CharacterDetailComponent } from './component/character-detail-card/character-detail/character-detail.component';
 
 @NgModule({
   declarations: [AppComponent, ViewsRouterComponent, ChoosingPanelComponent],
@@ -44,6 +45,8 @@ import { ScrollingTextComponent } from './component/scrolling-text/scrolling-tex
     MatTooltipModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
+    CharacterDetailCardComponent,
+    CharacterDetailComponent,
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },

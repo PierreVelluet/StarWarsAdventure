@@ -5,29 +5,23 @@ import {
   IGameStep,
   IState,
 } from 'src/typescript/interfaces/general-interfaces';
-import steps from '../../gameSteps.json';
 import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
 import { SteppingDirection } from 'src/typescript/enums';
 import { CacheService } from '../cache/cache.service';
+import { baseState, gameSteps } from 'src/utils/staticDatas';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StoreService {
   private gameSteps: IGameStep[];
-  private state: BehaviorSubject<IState> = new BehaviorSubject<IState>({
-    loading: false,
-    character: null,
-    droid: null,
-    vehicle: null,
-    location: null,
-    currentGameStep: steps[0],
-    localStorageStoreKey: 'starwarsAdventureKey',
-  });
+  private state: BehaviorSubject<IState> = new BehaviorSubject<IState>(
+    baseState
+  );
   sharedState$: Observable<IState> = this.state.asObservable();
 
   constructor(private _cacheService: CacheService) {
-    this.gameSteps = steps;
+    this.gameSteps = gameSteps;
   }
 
   // Get the state
@@ -97,7 +91,10 @@ export class StoreService {
   ): IState {
     const newState: IState = {
       ...oldState,
-      [entityName]: entityValue,
+      mainCharacter: {
+        ...oldState.mainCharacter,
+        [entityName]: entityValue,
+      },
     };
 
     return newState;

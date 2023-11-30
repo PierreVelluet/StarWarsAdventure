@@ -8,6 +8,7 @@ export class UtilsService {
   constructor() {}
 
   public trimString(text: string, maxLenght: number): string {
+    if (text == '') return text;
     if (text.length >= maxLenght) return text.slice(0, maxLenght) + '...';
     else return text;
   }

@@ -1,0 +1,8 @@
+<mat-card @fadeInAnimation class="character-detail-card">
+  <div
+    *ngFor="let prop of propertyArray"
+    [ngClass]="['character-detail-container']"
+  >
+    <app-character-detail [property]="prop"></app-character-detail>
+  </div>
+</mat-card>

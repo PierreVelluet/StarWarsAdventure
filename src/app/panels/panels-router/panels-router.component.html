@@ -18,3 +18,8 @@
     *ngIf="currentStepType === allStepTypes.Choice"
   ></app-choose-panel>
 </div>
+<div class="character-detail-card-container">
+  <app-character-detail-card
+    *ngIf="currentStepType === allStepTypes.Game"
+  ></app-character-detail-card>
+</div>

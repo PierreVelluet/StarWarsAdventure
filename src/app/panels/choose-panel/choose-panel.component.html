@@ -1,35 +1,30 @@
-<div [ngClass]="['choose-panel-container']">
-  <h2 class="choosing-panel-title">Choose your loadout for the adventure</h2>
-  <app-choosing-stepper></app-choosing-stepper>
-  <div class="panel-container">
-    <!-- Start reroll-button-container -->
-    <div [ngClass]="['reroll-button-container']">
-      <button
-        [disabled]="numberOfReroll == 0 || isLoading || isClickPrevented"
-        (click)="rerollActionHandler()"
-        mat-raised-button
-        color="primary"
-        matTooltip="You have access to one reroll for each choosing loadout step. You'll have then access to three others randoms choices"
-      >
-        <i class="fa fa-random fa-1x"></i>
-        Reroll (x{{ numberOfReroll }})
-      </button>
-    </div>
-    <!-- Start animation-container -->
-    <div
-      class="animation-container"
-      [@choosingCardsListAnimation]="objs.length"
+<h2 class="choosing-panel-title">Choose your loadout for the adventure</h2>
+<app-choosing-stepper></app-choosing-stepper>
+<div class="panel-container">
+  <!-- Start reroll-button-container -->
+  <div [ngClass]="['reroll-button-container']">
+    <button
+      [disabled]="numberOfReroll == 0 || isLoading || isClickPrevented"
+      (click)="rerollActionHandler()"
+      mat-raised-button
+      color="primary"
+      matTooltip="You have access to one reroll for each choosing loadout step. You'll have then access to three others randoms choices"
     >
-      <div class="cards-container" *ngFor="let obj of objs">
-        <app-choosing-card
-          [ngClass]="['item']"
-          (chosenObject)="chooseActionHandler($event)"
-          [obj]="obj"
-          [isClickPrevented]="isClickPrevented || isLoading"
-        ></app-choosing-card>
-      </div>
-    </div>
-    <!-- Start reroll-button-container-mock -->
-    <div class="reroll-button-container-mock"></div>
+      <i class="fa fa-random fa-1x"></i>
+      Reroll (x{{ numberOfReroll }})
+    </button>
   </div>
+  <!-- Start animation-container -->
+  <div class="animation-container" [@choosingCardsListAnimation]="objs.length">
+    <div class="cards-container" *ngFor="let obj of objs">
+      <app-choosing-card
+        [ngClass]="['item']"
+        (chosenObject)="chooseActionHandler($event)"
+        [obj]="obj"
+        [isClickPrevented]="isClickPrevented || isLoading"
+      ></app-choosing-card>
+    </div>
+  </div>
+  <!-- Start reroll-button-container-mock -->
+  <div class="reroll-button-container-mock"></div>
 </div>

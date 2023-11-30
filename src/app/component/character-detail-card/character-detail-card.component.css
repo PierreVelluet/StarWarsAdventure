@@ -1,0 +1,15 @@
+:host ::ng-deep {
+  overflow-y: scroll !important;
+}
+
+.character-detail-card {
+  max-width: 600px;
+  display: flex;
+  align-self: center;
+}
+
+.character-detail-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

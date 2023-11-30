@@ -7,7 +7,7 @@ import { IGameStep } from 'src/typescript/interfaces/general-interfaces';
 import { StepType } from 'src/typescript/enums';
 
 import { StoreService } from '../../services/globalState/store.service';
-import steps from '../../gameSteps.json';
+import { gameSteps } from 'src/utils/staticDatas';
 
 @Component({
   selector: 'app-choosing-stepper',
@@ -22,7 +22,7 @@ export class ChoosingStepper {
   @ViewChild('stepper') stepper!: MatStepper;
 
   constructor(private globalStateService: StoreService) {
-    this.gameSteps = steps?.filter(
+    this.gameSteps = gameSteps?.filter(
       (el: IGameStep) => el.currentStepType == StepType.Choice
     );
   }

@@ -18,3 +18,13 @@
   mask-position: left;
   transition: -webkit-mask-position 2s linear;
 }
+
+.scene-2,
+.character-detail-card-container {
+  background-image: url("/assets/images/light-background.jpeg");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
