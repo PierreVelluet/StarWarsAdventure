@@ -9,6 +9,9 @@ import { choosingCardsListAnimation } from 'src/utils/angular-animations';
 import { CharactersDataService } from '../../services/data/characters-data.service';
 import { UtilsService } from '../../services/utils.service';
 import { StoreService } from '../../services/globalState/store.service';
+import { environment } from 'src/environments/environment';
+
+import { characterDummydata } from "../../../utils/staticDatas"
 
 @Component({
   selector: 'app-choose-panel',
@@ -54,6 +57,17 @@ export class ChoosingPanelComponent {
     if (!reroll && this.globalStateService.isEntitiesAlreadyFetched()) {
       this.objs = this.currentStep.entitiesPreviouslyFetched;
       this.allowClicksActionsAfterDelay();
+      return;
+    }
+    if (!environment.production) {
+      console.log("DEV ENVIRONMENT")
+      this.objs = characterDummydata;
+      this.globalStateService.updateEntitiesPreviouslyFetched(
+        this.objs,
+        reroll
+      );
+      this.allowClicksActionsAfterDelay();
+
       return;
     }
 

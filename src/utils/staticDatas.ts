@@ -3,6 +3,7 @@ import {
   IGameStep,
   IState,
 } from 'src/typescript/interfaces/general-interfaces';
+import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
 
 export const gameSteps: IGameStep[] = [
   {
@@ -93,7 +94,7 @@ export const baseCharacteristics: ICharacteristic[] = [
 
 export const baseState: IState = {
   loading: false,
-  currentGameStep: gameSteps[0],
+  currentGameStep: gameSteps[1],
   localStorageStoreKey: 'starwarsAdventureKey',
   mainCharacter: {
     character: null,
@@ -103,3 +104,30 @@ export const baseState: IState = {
     characteristics: baseCharacteristics,
   },
 };
+
+export const characterDummydata: IStarwarsEntity[] = [
+  {
+    _id: "1",
+    name: "Luck Skywalker",
+    description: "A strong warrior",
+    image:
+      "/assets/images/mockImage1.jpg",
+    type: ""
+  },
+  {
+    _id: "2",
+    name: "Dark Vador",
+    description: "A strong warrior",
+    image:
+      "/assets/images/mockImage2.jpg",
+    type: ""
+  },
+  {
+    _id: "3",
+    name: "Bobba fett",
+    description: "A strong warrior",
+    image:
+      "/assets/images/mockImage3.jpg",
+    type: ""
+  },
+];
