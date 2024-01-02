@@ -3,6 +3,7 @@ import { delay } from 'rxjs/operators';
 
 import { LoadingStateService } from './services/globalState/loading-state.service';
 import { StoreService } from './services/globalState/store.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,12 @@ export class AppComponent {
   public loading: boolean = false;
   constructor(
     private _loading: LoadingStateService,
-    private _globalStateService: StoreService
-  ) {}
+    private _globalStateService: StoreService,
+    translate: TranslateService
+  ) {
+    translate.setDefaultLang('fr');
+    translate.use('fr');
+  }
   ngOnInit() {
     this.listenToLoading();
     this._globalStateService.updateStateWithCachedOne();

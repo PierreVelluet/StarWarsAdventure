@@ -1,46 +1,29 @@
 <div class="welcome-panel-container">
   <!-- WelcomingStep 0 -->
   <div [ngClass]="['launch-button']" @fadeInAnimation>
-    <button
-      *ngIf="currentWelcomingStep === allWelcomingSteps.Step0"
-      (click)="launchButtonHandler()"
-      class="launch-button"
-      mat-raised-button
-      color="accent"
-    >
-      Dive into Starwars ?
+    <button *ngIf="currentWelcomingStep === allWelcomingSteps.Step0" (click)="launchButtonHandler()"
+      class="launch-button" mat-raised-button color="accent">
+      {{ 'WELCOME-PANEL.DIVE-BUTTON-TITLE' | translate }}
     </button>
   </div>
 
   <!-- WelcomingStep 1 -->
-  <div
-    [hidden]="currentWelcomingStep != allWelcomingSteps.Step1"
-    class="starwars-demo"
-  >
+  <div [hidden]="currentWelcomingStep != allWelcomingSteps.Step1" class="starwars-demo">
     <img src="/assets/images/star.svg" alt="Star" class="star" />
     <img src="assets/images/wars.svg" alt="Wars" class="wars" />
     <h2 class="byline" id="byline">tribute's adventure</h2>
   </div>
   <!-- WelcomingStep 2 -->
-  <app-scrolling-text
-    *ngIf="
+  <app-scrolling-text *ngIf="
       currentWelcomingStep === allWelcomingSteps.Step2 ||
       currentWelcomingStep === allWelcomingSteps.Step3
-    "
-  ></app-scrolling-text>
+    "></app-scrolling-text>
   <!-- WelcomingStep 3 -->
-  <div
-    *ngIf="currentWelcomingStep === allWelcomingSteps.Step3"
-    [ngClass]="['start-button-container']"
-    @fadeInAnimation
-  >
-    <button
-      (click)="!startBtnClicked ? startButtonHandler() : null"
-      [ngClass]="['start-button']"
-      mat-raised-button
-      color="accent"
-    >
-      {{ startBtnNeeded ? "Start !" : "" }}
+  <div *ngIf="currentWelcomingStep === allWelcomingSteps.Step3 && startBtnNeeded" [ngClass]="['start-button-container']"
+    @fadeInAnimation>
+    <button (click)="!startBtnClicked ? startButtonHandler() : null" [ngClass]="['start-button']" mat-raised-button
+      color="accent">
+      {{ 'WELCOME-PANEL.START-BUTTON-TITLE' | translate }}
     </button>
   </div>
 </div>

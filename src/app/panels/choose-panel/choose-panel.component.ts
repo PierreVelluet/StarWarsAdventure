@@ -5,12 +5,11 @@ import { IGameStep } from 'src/typescript/interfaces/general-interfaces';
 import { LoadingStateService } from 'src/app/services/globalState/loading-state.service';
 import { SteppingDirection } from 'src/typescript/enums';
 import { choosingCardsListAnimation } from 'src/utils/angular-animations';
+import { environment } from 'src/environments/environment';
 
 import { CharactersDataService } from '../../services/data/characters-data.service';
 import { UtilsService } from '../../services/utils.service';
 import { StoreService } from '../../services/globalState/store.service';
-import { environment } from 'src/environments/environment';
-
 import { characterDummydata } from "../../../utils/staticDatas"
 
 @Component({

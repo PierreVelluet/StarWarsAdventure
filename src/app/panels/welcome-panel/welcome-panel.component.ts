@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { ScrollingTextComponent } from 'src/app/component/scrolling-text/scrolling-text.component';
 import { WelcomingSteps } from 'src/typescript/enums';
@@ -8,12 +9,13 @@ import { StoreService } from 'src/app/services/globalState/store.service';
 import { SteppingDirection } from 'src/typescript/enums';
 import { fadeInAnimation } from 'src/utils/angular-animations';
 
+
 @Component({
   selector: 'app-welcome-panel',
   templateUrl: './welcome-panel.component.html',
   styleUrls: ['./welcome-panel.component.css'],
   standalone: true,
-  imports: [CommonModule, MatButtonModule, ScrollingTextComponent],
+  imports: [CommonModule, MatButtonModule, ScrollingTextComponent, TranslateModule],
   animations: [fadeInAnimation],
 })
 export class WelcomePanelComponent {
@@ -23,7 +25,7 @@ export class WelcomePanelComponent {
   public startBtnNeeded: boolean = true;
   public startBtnClicked: boolean = false;
 
-  constructor(private globalStateService: StoreService) {}
+  constructor(private globalStateService: StoreService) { }
 
   ngOnInit() {
     this.starWarsAnimation();

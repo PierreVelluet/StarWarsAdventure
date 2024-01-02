@@ -1,0 +1,8 @@
+{
+    "TITLE": "Une aventure dans l'univers de Starwars",
+    "GLOBAL": {},
+    "WELCOME-PANEL": {
+        "DIVE-BUTTON-TITLE": "Entre dans l'univers Starwars",
+        "START-BUTTON-TITLE": "Commencer"
+    }
+}

@@ -94,7 +94,7 @@ export const baseCharacteristics: ICharacteristic[] = [
 
 export const baseState: IState = {
   loading: false,
-  currentGameStep: gameSteps[1],
+  currentGameStep: gameSteps[0],
   localStorageStoreKey: 'starwarsAdventureKey',
   mainCharacter: {
     character: null,
