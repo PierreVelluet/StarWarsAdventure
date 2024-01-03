@@ -27,13 +27,15 @@ import { ViewsRouterComponent } from './panels/panels-router/panels-router.compo
 import { ScrollingTextComponent } from './component/scrolling-text/scrolling-text.component';
 import { CharacterDetailCardComponent } from './component/character-detail-card/character-detail-card.component';
 import { CharacterDetailComponent } from './component/character-detail-card/character-detail/character-detail.component';
+import { StoryPanelComponent } from './panels/story-panel/story-panel.component';
+import { StoryCardComponent } from './component/story-card/story-card.component';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
-  declarations: [AppComponent, ViewsRouterComponent, ChoosingPanelComponent],
+  declarations: [AppComponent, ViewsRouterComponent, ChoosingPanelComponent, StoryPanelComponent, StoryCardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

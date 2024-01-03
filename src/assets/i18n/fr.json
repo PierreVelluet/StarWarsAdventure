@@ -4,5 +4,49 @@
     "WELCOME-PANEL": {
         "DIVE-BUTTON-TITLE": "Entre dans l'univers Starwars",
         "START-BUTTON-TITLE": "Commencer"
-    }
+    },
+    "STORIES": [
+        {
+            "id": 0,
+            "title": "Avant, il n'y avait rien",
+            "imagePath": "",
+            "text": "Votre vaisseau vient de se poser sur la planète. Vous regardez au loin, vers cette terre inhospitalière. Vous vous demandez ce qu'il se cache derrière cette poussière, cette terre. Au loin, à l'est, une grande et sombre forêt. Moins loin, à l'est, des collines plus parsemées, pas moins inquiétantes.",
+            "choices": [
+                {
+                    "id": 1,
+                    "text": "Allez à l'ouest, vers la forêt luxuriante.",
+                    "path": 1,
+                    "associatedItem": ""
+                },
+                {
+                    "id": 2,
+                    "text": "Partez explorer au delà des dénivelés à l'est.",
+                    "path": 2,
+                    "associatedItem": ""
+                }
+            ],
+            "type": "IPlanet;"
+        },
+        {
+            "id": 1,
+            "title": "Forêt",
+            "imagePath": "",
+            "text": "Sacré forêt",
+            "choices": [
+                {
+                    "id": 1,
+                    "text": "hihi",
+                    "path": 2,
+                    "associatedItem": ""
+                },
+                {
+                    "id": 2,
+                    "text": "ahah",
+                    "path": 3,
+                    "associatedItem": ""
+                }
+            ],
+            "type": "IPlanet;"
+        }
+    ]
 }

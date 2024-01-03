@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {
-  ICharacter,
   IStarwarsEntity,
 } from 'src/typescript/interfaces/starwars-interfaces';
 
@@ -10,9 +9,7 @@ import {
   providedIn: 'root',
 })
 export class CharactersDataService {
-  characters: ICharacter[];
   constructor(private http: HttpClient) {
-    this.characters = [];
   }
 
   getStarwarsEntites(entityType: string): Observable<IStarwarsEntity[]> {

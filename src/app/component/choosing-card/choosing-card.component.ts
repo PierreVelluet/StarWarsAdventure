@@ -8,7 +8,7 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
 import { LoadingStateService } from 'src/app/services/globalState/loading-state.service';
 
-import { UtilsService } from '../../services/utils.service';
+import { UtilsService } from '../../services/utils/utils.service';
 import { ChoosingModalComponent } from '../choosing-modal/choosing-modal.component';
 
 @Component({

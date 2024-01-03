@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { UtilsService } from 'src/app/services/utils.service';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 import { ICharacteristic } from 'src/typescript/interfaces/general-interfaces';
 import { IStarwarsEntity } from 'src/typescript/interfaces/starwars-interfaces';
 

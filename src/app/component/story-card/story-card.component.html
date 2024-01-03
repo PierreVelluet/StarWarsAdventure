@@ -1,0 +1,11 @@
+<div class="d-flex flex-column align-items-center story-card ps-5 pe-5 pt-2 pb-2">
+    <p class="text-center fs-3">{{story.title}}</p>
+    <img class="storyImage" alt="{{story.type}}" [src]="defaultImage" [lazyLoad]="lazyLoadImage"
+        [errorImage]="imageToShowOnError" />
+    <div class="story pt-2 pb-2">{{story.text}}</div>
+    <div class="choices-container">
+        <div class="choices" *ngFor="let choice of story.choices">
+            <p class="choice-text">¤ {{choice?.text}}</p>
+        </div>
+    </div>
+</div>

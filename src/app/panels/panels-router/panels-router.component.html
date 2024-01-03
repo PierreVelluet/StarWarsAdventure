@@ -1,25 +1,19 @@
 <div class="scene-1">
-  <app-welcome-panel
-    *ngIf="
+  <app-welcome-panel *ngIf="
       currentStepType === allStepTypes.Introduction ||
       (currentStepType === allStepTypes.Choice &&
         currentTransitiontype === allTransitionTypes.Introduction)
-    "
-  ></app-welcome-panel>
+    "></app-welcome-panel>
 </div>
 
-<div
-  [class]="[
+<div [class]="[
     'scene-2',
     currentStepType === allStepTypes.Choice ? 'transitionOn' : ''
-  ]"
->
-  <app-choose-panel
-    *ngIf="currentStepType === allStepTypes.Choice"
-  ></app-choose-panel>
+  ]">
+  <app-choose-panel *ngIf="currentStepType === allStepTypes.Choice"></app-choose-panel>
 </div>
 <div class="character-detail-card-container">
-  <app-character-detail-card
-    *ngIf="currentStepType === allStepTypes.Game"
-  ></app-character-detail-card>
+
+  <app-story-panel *ngIf="currentStepType === allStepTypes.Game">
+  </app-story-panel>
 </div>

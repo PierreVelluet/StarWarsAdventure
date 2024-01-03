@@ -1,0 +1,27 @@
+.story-card {
+    width: 650px;
+    height: 500px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: whitesmoke;
+}
+
+.title {
+    
+}
+
+.storyImage {
+    border-radius: 5px;
+    height: 255px;
+    width: 430px;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.choice-text {
+   
+}
+
+.choice-text:hover {
+    pointer-events: cursor;
+    font-weight: 700;
+}
